@@ -5,6 +5,7 @@ import QtQuick.Layouts 1.0
 ColumnLayout {
 	property alias cfg_user: userTextField.text
 	property alias cfg_repo: repoTextField.text
+	property alias cfg_updateIntervalInMinutes: updateIntervalInMinutesSpinBox.value
 
 	ColumnLayout {
 		Layout.alignment: Qt.AlignTop
@@ -25,6 +26,19 @@ ColumnLayout {
 			TextField {
 				id: repoTextField
 				Layout.fillWidth: true
+			}
+		}
+
+		RowLayout {
+			Label {
+				text: i18n("Update Every:")
+			}
+			SpinBox {
+				id: updateIntervalInMinutesSpinBox
+				Layout.fillWidth: true
+				stepSize: 5
+				minimumValue: 5
+				maximumValue: 24 * 60
 			}
 		}
 	}

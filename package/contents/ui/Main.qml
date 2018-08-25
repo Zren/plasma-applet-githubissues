@@ -34,6 +34,11 @@ Item {
 		interval: 400
 		onTriggered: widget.updateIssuesModel()
 	}
+	Timer {
+		id: updateModelTimer
+		interval: plasmoid.configuration.updateIntervalInMinutes
+		onTriggered: debouncedUpdateIssuesModel.restart()
+	}
 
 	Connections {
 		target: plasmoid.configuration

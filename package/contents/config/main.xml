@@ -12,6 +12,9 @@
     <entry name="repo" type="string">
       <default></default>
     </entry>
+    <entry name="updateIntervalInMinutes" type="int">
+      <default>60</default>
+    </entry>
   </group>
 
 </kcfg>
