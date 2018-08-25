@@ -12,11 +12,9 @@ Item {
 
 	Plasmoid.icon: plasmoid.file("", "icons/octicon-mark-github.svg")
 
-	property string user: 'Zren'
-	property string repo: 'plasma-applet-tiledmenu'
-	// readonly property string issuesUrl: 'https://api.github.com/repos/' + user + '/' + repo + '/issues?state=all'
-	// readonly property string issuesUrl: 'Zren-plasma-applet-eventcalendar-issues.json'
-	readonly property string issuesUrl: plasmoid.file("", "ui/Zren-plasma-applet-tiledmenu-issues.json")
+	readonly property string repoString: plasmoid.configuration.user + '/' + plasmoid.configuration.repo
+	readonly property string issuesUrl: 'https://api.github.com/repos/' + repoString + '/issues?state=all'
+	// readonly property string issuesUrl: plasmoid.file("", "ui/Zren-plasma-applet-tiledmenu-issues.json")
 
 	property var issuesModel: []
 
@@ -31,7 +29,22 @@ Item {
 			widget.issuesModel = data
 		})
 	}
+	Timer {
+		id: debouncedUpdateIssuesModel
+		interval: 400
+		onTriggered: widget.updateIssuesModel()
+	}
+
+	Connections {
+		target: plasmoid.configuration
+		onUserChanged: debouncedUpdateIssuesModel.restart()
+		onRepoChanged: debouncedUpdateIssuesModel.restart()
+	}
+
+	Plasmoid.hideOnWindowDeactivate: !plasmoid.userConfiguring
 	Component.onCompleted: {
 		updateIssuesModel()
+
+		// plasmoid.action("configure").trigger() // Uncomment to test config window
 	}
 }
