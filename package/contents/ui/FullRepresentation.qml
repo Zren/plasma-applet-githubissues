@@ -46,7 +46,7 @@ Item {
 					property var issue: modelData
 
 					Rectangle {
-						visible: index > 0
+						// visible: index > 0
 						Layout.fillWidth: true
 						color: theme.textColor
 						Layout.preferredHeight: 1 * units.devicePixelRatio
