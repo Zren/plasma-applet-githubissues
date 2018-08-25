@@ -14,6 +14,8 @@ Item {
 	Layout.minimumHeight: 200 * units.devicePixelRatio
 	Layout.preferredHeight: 600 * units.devicePixelRatio
 
+	RelativeDateTimer { id: relativeDateTimer }
+
 	ColumnLayout {
 		anchors.fill: parent
 
@@ -102,20 +104,43 @@ Item {
 							}
 
 							PlasmaComponents.Label {
+								id: timestampText
 								Layout.fillWidth: true
 								Layout.preferredHeight: contentHeight
-								text: {
-									if (issue.state == 'open') { // '#19 opened 7 days ago by RustyRaptor'
-										return i18n("#%1 opened %2 by %3", issue.number, TimeUtils.getRelativeDate(issue.created_at), issue.user.login)
-									} else { // 'closed'   #14 by JPRuehmann was closed on 5 Jul 
-										return i18n("#%1 by %3 was closed on %2", issue.number, TimeUtils.getRelativeDate(issue.closed_at), issue.user.login)
-									}
-								}
 								wrapMode: Text.Wrap
 								font.family: 'Helvetica'
 								font.pointSize: -1
 								font.pixelSize: 12 * units.devicePixelRatio
 								opacity: 0.6
+
+								text: ""
+								property var dateTime: {
+									if (issue.state == 'open') { // '#19 opened 7 days ago by RustyRaptor'
+										return issue.created_at
+									} else { // 'closed'   #14 by JPRuehmann was closed on 5 Jul 
+										return issue.closed_at
+									}
+								}
+								property string dateTimeText: ""
+								Component.onCompleted: timestampText.updateText()
+								
+								Connections {
+									target: relativeDateTimer
+									onTriggered: timestampText.updateText()
+								}
+
+								function updateRelativeDate() {
+									dateTimeText = TimeUtils.getRelativeDate(dateTime)
+								}
+
+								function updateText() {
+									updateRelativeDate()
+									if (issue.state == 'open') { // '#19 opened 7 days ago by RustyRaptor'
+										text = i18n("#%1 opened %2 by %3", issue.number, dateTimeText, issue.user.login)
+									} else { // 'closed'   #14 by JPRuehmann was closed on 5 Jul 
+										text = i18n("#%1 by %3 was closed on %2", issue.number, dateTimeText, issue.user.login)
+									}
+								}
 							}
 						}
 
