@@ -21,9 +21,6 @@ Item {
 
 		PlasmaComponents.Label {
 			Layout.fillWidth: true
-			anchors.left: parent.left
-			anchors.top: parent.top
-			anchors.right: parent.right
 			text: plasmoid.configuration.user + ' / ' + plasmoid.configuration.repo
 			font.weight: Font.Bold
 			font.pixelSize: 24
