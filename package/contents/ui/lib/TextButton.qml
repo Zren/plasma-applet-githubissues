@@ -3,8 +3,7 @@ import QtQuick.Controls 1.0
 import QtQuick.Layouts 1.1
 import org.kde.plasma.core 2.0 as PlasmaCore
 
-
-Text {
+TextLabel {
 	id: textButton
 	Layout.alignment: Qt.AlignTop
 	

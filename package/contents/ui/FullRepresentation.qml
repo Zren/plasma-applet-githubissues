@@ -63,7 +63,7 @@ Item {
 						Layout.topMargin: padding
 						Layout.bottomMargin: padding
 
-						Text {
+						TextLabel {
 							id: issueTitleIcon
 							
 							text: {
@@ -89,15 +89,54 @@ Item {
 							Layout.minimumHeight: 16 * units.devicePixelRatio
 						}
 
+						ColumnLayout {
+							TextButton {
+								id: issueTitleLabel
 
-						TextButton {
-							id: issueTitleLabel
+								Layout.fillWidth: true
+								text: issue.title
+								font.weight: Font.Bold
 
-							Layout.fillWidth: true
-							text: issue.title
-							font.weight: Font.Bold
+								onClicked: Qt.openUrlExternally(issue.html_url)
+							}
+							TextLabel {
+								id: timestampText
+								Layout.fillWidth: true
+								wrapMode: Text.Wrap
+								font.family: 'Helvetica'
+								font.pointSize: -1
+								font.pixelSize: 12 * units.devicePixelRatio
+								opacity: 0.6
 
-							onClicked: Qt.openUrlExternally(issue.html_url)
+								text: ""
+								property var dateTime: {
+									if (issue.state == 'open') { // '#19 opened 7 days ago by RustyRaptor'
+										return issue.created_at
+									} else { // 'closed'   #14 by JPRuehmann was closed on 5 Jul 
+										return issue.closed_at
+									}
+								}
+								property string dateTimeText: ""
+								Component.onCompleted: timestampText.updateText()
+								
+								Connections {
+									target: relativeDateTimer
+									onTriggered: timestampText.updateText()
+								}
+
+								function updateRelativeDate() {
+									dateTimeText = TimeUtils.getRelativeDate(dateTime)
+								}
+
+								function updateText() {
+									updateRelativeDate()
+									if (issue.state == 'open') { // '#19 opened 7 days ago by RustyRaptor'
+										text = i18n("#%1 opened %2 by %3", issue.number, dateTimeText, issue.user.login)
+									} else { // 'closed'   #14 by JPRuehmann was closed on 5 Jul 
+										text = i18n("#%1 by %3 was closed on %2", issue.number, dateTimeText, issue.user.login)
+									}
+								}
+							}
 						}
 
 						MouseArea {
@@ -116,7 +155,7 @@ Item {
 								id: commentButtonRow
 								spacing: 0
 
-								Text {
+								TextLabel {
 									text: octicons.comment
 									
 									color: commentButton.textColor
@@ -127,7 +166,7 @@ Item {
 									Layout.preferredHeight: 16 * units.devicePixelRatio
 								}
 
-								Text {
+								TextLabel {
 									text: " " + issue.comments
 									
 									color: commentButton.textColor
