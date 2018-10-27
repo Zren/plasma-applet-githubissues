@@ -25,6 +25,9 @@ Item {
 		readonly property string issueClosed: "\ue801"
 		readonly property string issueOpened: "\ue802"
 		readonly property string markGithub: "\ue803"
+		readonly property string repo: "\ue804"
+		readonly property string gitMerge: "\ue805"
+		readonly property string gitPullRequest: "\ue806"
 	}
 
 	Plasmoid.fullRepresentation: FullRepresentation {}
