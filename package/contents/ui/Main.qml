@@ -15,7 +15,6 @@ Item {
 	readonly property string repoString: plasmoid.configuration.user + '/' + plasmoid.configuration.repo
 	readonly property string issueState: plasmoid.configuration.issueState
 	readonly property string issuesUrl: 'https://api.github.com/repos/' + repoString + '/issues?state=' + issueState
-	// readonly property string issuesUrl: plasmoid.file("", "ui/Zren-plasma-applet-tiledmenu-issues.json")
 
 	property var issuesModel: []
 
