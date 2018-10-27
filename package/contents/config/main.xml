@@ -19,6 +19,9 @@
       <!-- enum: open, closed, all -->
       <default>all</default>
     </entry>
+    <entry name="showHeading" type="bool">
+      <default>true</default>
+    </entry>
   </group>
 
 </kcfg>

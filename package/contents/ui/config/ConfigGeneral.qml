@@ -47,6 +47,11 @@ ColumnLayout {
 				minimumValue: 5
 				maximumValue: 24 * 60
 			}
+
+			ConfigCheckBox {
+				configKey: "showHeading"
+				Kirigami.FormData.label: i18n("Show Heading:")
+			}
 		}
 	}
 }

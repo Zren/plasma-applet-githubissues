@@ -20,7 +20,9 @@ Item {
 		anchors.fill: parent
 
 		PlasmaComponents.Label {
+			id: heading
 			Layout.fillWidth: true
+			visible: plasmoid.configuration.showHeading
 			text: plasmoid.configuration.user + ' / ' + plasmoid.configuration.repo
 			font.weight: Font.Bold
 			font.pixelSize: 24
@@ -45,7 +47,7 @@ Item {
 					property var issue: modelData
 
 					Rectangle {
-						// visible: index > 0
+						visible: (heading.visible && index == 0) || index > 0
 						Layout.fillWidth: true
 						color: theme.textColor
 						Layout.preferredHeight: 1 * units.devicePixelRatio
