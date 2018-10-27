@@ -18,6 +18,7 @@ Item {
 
 	ColumnLayout {
 		anchors.fill: parent
+		visible: widget.hasRepo
 
 		PlasmaComponents.Label {
 			id: heading
@@ -217,5 +218,12 @@ Item {
 			}
 		}
 
+	}
+
+	PlasmaComponents.Button {
+		anchors.centerIn: parent
+		visible: !widget.hasRepo
+		text: plasmoid.action("configure").text
+		onClicked: plasmoid.action("configure").trigger()
 	}
 }

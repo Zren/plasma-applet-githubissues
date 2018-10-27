@@ -12,6 +12,7 @@ Item {
 
 	Plasmoid.icon: plasmoid.file("", "icons/octicon-mark-github.svg")
 
+	readonly property bool hasRepo: plasmoid.configuration.user && plasmoid.configuration.repo
 	readonly property string repoString: plasmoid.configuration.user + '/' + plasmoid.configuration.repo
 	readonly property string issueState: plasmoid.configuration.issueState
 	readonly property string issuesUrl: 'https://api.github.com/repos/' + repoString + '/issues?state=' + issueState
@@ -23,13 +24,17 @@ Item {
 	Plasmoid.fullRepresentation: FullRepresentation {}
 
 	function updateIssuesModel() {
-		Requests.getJSON({
-			url: issuesUrl
-		}, function(err, data, xhr){
-			console.log(err)
-			console.log(data)
-			widget.issuesModel = data
-		})
+		if (widget.hasRepo) {
+			Requests.getJSON({
+				url: issuesUrl
+			}, function(err, data, xhr){
+				console.log(err)
+				console.log(data)
+				widget.issuesModel = data
+			})
+		} else {
+			widget.issuesModel = []
+		}
 	}
 	Timer {
 		id: debouncedUpdateIssuesModel
