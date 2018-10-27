@@ -13,7 +13,8 @@ Item {
 	Plasmoid.icon: plasmoid.file("", "icons/octicon-mark-github.svg")
 
 	readonly property string repoString: plasmoid.configuration.user + '/' + plasmoid.configuration.repo
-	readonly property string issuesUrl: 'https://api.github.com/repos/' + repoString + '/issues?state=all'
+	readonly property string issueState: plasmoid.configuration.issueState
+	readonly property string issuesUrl: 'https://api.github.com/repos/' + repoString + '/issues?state=' + issueState
 	// readonly property string issuesUrl: plasmoid.file("", "ui/Zren-plasma-applet-tiledmenu-issues.json")
 
 	property var issuesModel: []
@@ -46,6 +47,7 @@ Item {
 		target: plasmoid.configuration
 		onUserChanged: debouncedUpdateIssuesModel.restart()
 		onRepoChanged: debouncedUpdateIssuesModel.restart()
+		onIssueStateChanged: debouncedUpdateIssuesModel.restart()
 	}
 
 	Plasmoid.hideOnWindowDeactivate: !plasmoid.userConfiguring

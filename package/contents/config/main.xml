@@ -15,6 +15,10 @@
     <entry name="updateIntervalInMinutes" type="int">
       <default>60</default>
     </entry>
+    <entry name="issueState" type="string">
+      <!-- enum: open, closed, all -->
+      <default>all</default>
+    </entry>
   </group>
 
 </kcfg>
