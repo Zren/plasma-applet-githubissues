@@ -33,9 +33,9 @@ ColumnLayout {
 				Kirigami.FormData.label: i18n("Issues:")
 				configKey: "issueState"
 				model: [
-					{ value: "all", text: i18n("Open + Closed Issues") },
 					{ value: "open", text: i18n("Open Issues") },
 					{ value: "closed", text: i18n("Closed Issues") },
+					{ value: "all", text: i18n("Open + Closed Issues") },
 				]
 			}
 

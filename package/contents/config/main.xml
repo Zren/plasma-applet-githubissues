@@ -17,7 +17,7 @@
     </entry>
     <entry name="issueState" type="string">
       <!-- enum: open, closed, all -->
-      <default>all</default>
+      <default>open</default>
     </entry>
     <entry name="showHeading" type="bool">
       <default>true</default>
