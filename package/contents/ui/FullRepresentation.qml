@@ -51,113 +51,89 @@ Item {
 						Layout.preferredHeight: 1 * units.devicePixelRatio
 						opacity: 0.3
 					}
-				
+					
 					RowLayout {
-						property int rightPadding: 16 * units.devicePixelRatio
-						Layout.rightMargin: rightPadding
 						Layout.fillWidth: true
 
-						AppletIcon {
-							source: {
+						property int sidePadding: 16 * units.devicePixelRatio
+						Layout.rightMargin: sidePadding
+						Layout.leftMargin: sidePadding
+
+						property int padding: 8 * units.devicePixelRatio
+						Layout.topMargin: padding
+						Layout.bottomMargin: padding
+
+						Text {
+							id: issueTitleIcon
+							
+							text: {
 								if (issue.state == 'open') {
-									return "octicon-issue-open"
+									return octicons.issueOpened
 								} else { // 'closed'
-									return "octicon-issue-closed"
+									return octicons.issueClosed
 								}
 							}
+							color: {
+								if (issue.state == 'open') {
+									return '#28a745'
+								} else { // 'closed'
+									return '#cb2431'
+								}
+							}
+							font.family: "fontello"
+							font.pointSize: -1
+							font.pixelSize: 16 * units.devicePixelRatio
+							// font.weight: Font.Bold
+							Layout.alignment: Qt.AlignTop
 							Layout.minimumWidth: 16 * units.devicePixelRatio
 							Layout.minimumHeight: 16 * units.devicePixelRatio
-							Layout.maximumWidth: Layout.minimumWidth
-							property int padding: 8 * units.devicePixelRatio
-							Layout.topMargin: padding
-							Layout.bottomMargin: padding
-							Layout.leftMargin: 16 * units.devicePixelRatio
-							Layout.alignment: Qt.AlignTop
 						}
 
-						ColumnLayout {
-							property int padding: 8 * units.devicePixelRatio
-							Layout.topMargin: padding
-							Layout.bottomMargin: padding
-							spacing: 4 * units.devicePixelRatio
 
-							PlasmaComponents.Label {
-								Layout.fillWidth: true
-								Layout.preferredHeight: contentHeight
-								text: '<a href="' + issue.html_url + '">' + issue.title + '</a>'
-								wrapMode: Text.Wrap
-								font.family: 'Helvetica'
-								font.pointSize: -1
-								font.pixelSize: 16 * units.devicePixelRatio
-								font.weight: Font.Bold
-								linkColor: PlasmaCore.ColorScope.highlightColor
-								onLinkActivated: Qt.openUrlExternally(link)
-								
-								MouseArea {
-									anchors.fill: parent
-									acceptedButtons: Qt.NoButton // we don't want to eat clicks on the Text
-									cursorShape: parent.hoveredLink ? Qt.PointingHandCursor : Qt.ArrowCursor
-								}
-							}
+						TextButton {
+							id: issueTitleLabel
 
-							PlasmaComponents.Label {
-								id: timestampText
-								Layout.fillWidth: true
-								Layout.preferredHeight: contentHeight
-								wrapMode: Text.Wrap
-								font.family: 'Helvetica'
-								font.pointSize: -1
-								font.pixelSize: 12 * units.devicePixelRatio
-								opacity: 0.6
-
-								text: ""
-								property var dateTime: {
-									if (issue.state == 'open') { // '#19 opened 7 days ago by RustyRaptor'
-										return issue.created_at
-									} else { // 'closed'   #14 by JPRuehmann was closed on 5 Jul 
-										return issue.closed_at
-									}
-								}
-								property string dateTimeText: ""
-								Component.onCompleted: timestampText.updateText()
-								
-								Connections {
-									target: relativeDateTimer
-									onTriggered: timestampText.updateText()
-								}
-
-								function updateRelativeDate() {
-									dateTimeText = TimeUtils.getRelativeDate(dateTime)
-								}
-
-								function updateText() {
-									updateRelativeDate()
-									if (issue.state == 'open') { // '#19 opened 7 days ago by RustyRaptor'
-										text = i18n("#%1 opened %2 by %3", issue.number, dateTimeText, issue.user.login)
-									} else { // 'closed'   #14 by JPRuehmann was closed on 5 Jul 
-										text = i18n("#%1 by %3 was closed on %2", issue.number, dateTimeText, issue.user.login)
-									}
-								}
-							}
+							Layout.fillWidth: true
+							text: issue.title
+							font.weight: Font.Bold
 						}
 
-						RowLayout {
-							visible: issue.comments > 0
-							spacing: 0
+						MouseArea {
+							id: commentButton
 							Layout.alignment: Qt.AlignTop
+							implicitWidth: commentButtonRow.implicitWidth
+							implicitHeight: commentButtonRow.implicitHeight
+							
+							hoverEnabled: true
+							cursorShape: containsMouse ? Qt.PointingHandCursor : Qt.ArrowCursor
+							property color textColor: containsMouse ? PlasmaCore.ColorScope.highlightColor : PlasmaCore.ColorScope.textColor
 
-							AppletIcon {
-								source: "octicon-comment"
-								Layout.minimumWidth: 16 * units.devicePixelRatio
-								Layout.minimumHeight: 16 * units.devicePixelRatio
-								Layout.maximumWidth: Layout.minimumWidth
-								property int padding: 8 * units.devicePixelRatio
-								Layout.topMargin: padding
-								Layout.bottomMargin: padding
-								Layout.leftMargin: 16 * units.devicePixelRatio
-							}
-							PlasmaComponents.Label {
-								text: " " + issue.comments
+							RowLayout {
+								id: commentButtonRow
+								spacing: 0
+
+								Text {
+									text: octicons.comment
+									
+									color: commentButton.textColor
+									font.family: "fontello"
+									// font.weight: Font.Bold
+									font.pointSize: -1
+									font.pixelSize: 16 * units.devicePixelRatio
+									Layout.preferredHeight: 16 * units.devicePixelRatio
+								}
+
+								Text {
+									text: " " + issue.comments
+									
+									color: commentButton.textColor
+									font.family: "Helvetica"
+									// font.weight: Font.Bold
+									font.pointSize: -1
+									font.pixelSize: 12 * units.devicePixelRatio
+									Layout.preferredHeight: 12 * units.devicePixelRatio
+									Layout.alignment: Qt.AlignTop
+								}
 							}
 						}
 					}
