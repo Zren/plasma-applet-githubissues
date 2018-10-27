@@ -67,17 +67,41 @@ Item {
 							id: issueTitleIcon
 							
 							text: {
-								if (issue.state == 'open') {
-									return octicons.issueOpened
-								} else { // 'closed'
-									return octicons.issueClosed
+								if (issue.pull_request) {
+									if (issue.state == 'open') {
+										return octicons.gitPullRequest
+									} else { // 'closed'
+										// Note, there's currently no way to tell if a pull request was merged
+										// or if it was closed. To find that out, we'd need to query 
+										// the pull request api endpoint as well.
+										if (true) { // issue.merged
+											return octicons.gitMerge
+										} else {
+											return octicons.gitPullRequest
+										}
+									}
+								} else {
+									if (issue.state == 'open') {
+										return octicons.issueOpened
+									} else { // 'closed'
+										return octicons.issueClosed
+									}
 								}
 							}
 							color: {
 								if (issue.state == 'open') {
 									return '#28a745'
 								} else { // 'closed'
-									return '#cb2431'
+									if (issue.pull_request) {
+										// Note: Assume it was merged
+										if (true) { // issue.merged
+											return '#6f42c1'
+										} else {
+											return '#cb2431'
+										}
+									} else {
+										return '#cb2431'
+									}
 								}
 							}
 							font.family: "fontello"
@@ -132,8 +156,12 @@ Item {
 									updateRelativeDate()
 									if (issue.state == 'open') { // '#19 opened 7 days ago by RustyRaptor'
 										text = i18n("#%1 opened %2 by %3", issue.number, dateTimeText, issue.user.login)
-									} else { // 'closed'   #14 by JPRuehmann was closed on 5 Jul 
-										text = i18n("#%1 by %3 was closed %2", issue.number, dateTimeText, issue.user.login)
+									} else { // 'closed'   #14 by JPRuehmann was closed on 5 Jul
+										if (issue.pull_request && true) { // Assume issue.merged=true
+											text = i18n("#%1 by %3 was merged %2", issue.number, dateTimeText, issue.user.login)
+										} else {
+											text = i18n("#%1 by %3 was closed %2", issue.number, dateTimeText, issue.user.login)
+										}
 									}
 								}
 							}
