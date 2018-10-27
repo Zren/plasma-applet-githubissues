@@ -36,7 +36,6 @@ Item {
 	}
 	Timer {
 		id: updateModelTimer
-		running: plasmoid.expanded
 		interval: plasmoid.configuration.updateIntervalInMinutes
 		onTriggered: debouncedUpdateIssuesModel.restart()
 	}
