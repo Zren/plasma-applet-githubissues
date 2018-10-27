@@ -1,6 +1,9 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.0
 import QtQuick.Layouts 1.0
+import org.kde.kirigami 2.5 as Kirigami
+
+import "../lib"
 
 ColumnLayout {
 	property alias cfg_user: userTextField.text
@@ -9,32 +12,36 @@ ColumnLayout {
 
 	ColumnLayout {
 		Layout.alignment: Qt.AlignTop
-		RowLayout {
-			Label {
-				text: i18n("User:")
-			}
+
+		Kirigami.FormLayout {
+			Layout.fillWidth: true
+			wideMode: true
+
 			TextField {
 				id: userTextField
+				Kirigami.FormData.label: i18n("User:")
 				Layout.fillWidth: true
 			}
-		}
 
-		RowLayout {
-			Label {
-				text: i18n("Repo:")
-			}
 			TextField {
 				id: repoTextField
+				Kirigami.FormData.label: i18n("Repo:")
 				Layout.fillWidth: true
 			}
-		}
 
-		RowLayout {
-			Label {
-				text: i18n("Update Every:")
+			ConfigRadioButtonGroup {
+				Kirigami.FormData.label: i18n("Issues:")
+				configKey: "issueState"
+				model: [
+					{ value: "all", text: i18n("Open + Closed Issues") },
+					{ value: "open", text: i18n("Open Issues") },
+					{ value: "closed", text: i18n("Closed Issues") },
+				]
 			}
+
 			SpinBox {
 				id: updateIntervalInMinutesSpinBox
+				Kirigami.FormData.label: i18n("Update Every:")
 				Layout.fillWidth: true
 				stepSize: 5
 				minimumValue: 5
