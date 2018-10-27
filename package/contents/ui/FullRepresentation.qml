@@ -114,6 +114,8 @@ Item {
 						}
 
 						ColumnLayout {
+							spacing: 4 * units.devicePixelRatio
+
 							TextButton {
 								id: issueTitleLabel
 
