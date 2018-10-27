@@ -18,6 +18,15 @@ Item {
 
 	property var issuesModel: []
 
+	FontLoader {
+		id: octicons
+		source: "../fonts/fontello.ttf"
+		readonly property string comment: "\ue800"
+		readonly property string issueClosed: "\ue801"
+		readonly property string issueOpened: "\ue802"
+		readonly property string markGithub: "\ue803"
+	}
+
 	Plasmoid.fullRepresentation: FullRepresentation {}
 
 	function updateIssuesModel() {
