@@ -15,6 +15,7 @@ Text {
 	font.pointSize: -1
 	font.pixelSize: 16 * units.devicePixelRatio
 	
+	signal clicked(var mouse)
 
 	MouseArea {
 		id: mouseArea
@@ -22,6 +23,8 @@ Text {
 		Layout.alignment: Qt.AlignTop
 		hoverEnabled: true
 		cursorShape: containsMouse ? Qt.PointingHandCursor : Qt.ArrowCursor
+		
+		onClicked: textButton.clicked(mouse)
 	}
 }
 

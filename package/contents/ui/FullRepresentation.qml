@@ -96,6 +96,8 @@ Item {
 							Layout.fillWidth: true
 							text: issue.title
 							font.weight: Font.Bold
+
+							onClicked: Qt.openUrlExternally(issue.html_url)
 						}
 
 						MouseArea {
@@ -107,6 +109,8 @@ Item {
 							hoverEnabled: true
 							cursorShape: containsMouse ? Qt.PointingHandCursor : Qt.ArrowCursor
 							property color textColor: containsMouse ? PlasmaCore.ColorScope.highlightColor : PlasmaCore.ColorScope.textColor
+
+							onClicked: Qt.openUrlExternally(issue.html_url)
 
 							RowLayout {
 								id: commentButtonRow
