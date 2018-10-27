@@ -133,7 +133,7 @@ Item {
 									if (issue.state == 'open') { // '#19 opened 7 days ago by RustyRaptor'
 										text = i18n("#%1 opened %2 by %3", issue.number, dateTimeText, issue.user.login)
 									} else { // 'closed'   #14 by JPRuehmann was closed on 5 Jul 
-										text = i18n("#%1 by %3 was closed on %2", issue.number, dateTimeText, issue.user.login)
+										text = i18n("#%1 by %3 was closed %2", issue.number, dateTimeText, issue.user.login)
 									}
 								}
 							}
