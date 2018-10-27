@@ -4,7 +4,7 @@ A plasma widget that shows a list of recent github issues for a specific repo.
 
 ## Screenshots
 
-![](https://i.imgur.com/4w1JgIR.png)
+![](https://i.imgur.com/A8hO2Vh.png)
 
 ## Translating
 
