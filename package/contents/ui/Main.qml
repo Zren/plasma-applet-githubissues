@@ -11,6 +11,8 @@ Item {
 	id: widget
 
 	Plasmoid.icon: plasmoid.file("", "icons/octicon-mark-github.svg")
+	Plasmoid.backgroundHints: plasmoid.configuration.showBackground ? PlasmaCore.Types.DefaultBackground : PlasmaCore.Types.NoBackground
+	Plasmoid.hideOnWindowDeactivate: !plasmoid.userConfiguring
 
 	readonly property bool hasRepo: plasmoid.configuration.user && plasmoid.configuration.repo
 	readonly property string repoString: plasmoid.configuration.user + '/' + plasmoid.configuration.repo
@@ -54,7 +56,6 @@ Item {
 		onIssueStateChanged: debouncedUpdateIssuesModel.restart()
 	}
 
-	Plasmoid.hideOnWindowDeactivate: !plasmoid.userConfiguring
 	Component.onCompleted: {
 		updateIssuesModel()
 

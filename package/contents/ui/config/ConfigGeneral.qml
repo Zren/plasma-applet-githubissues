@@ -50,7 +50,12 @@ ColumnLayout {
 
 			ConfigCheckBox {
 				configKey: "showHeading"
-				Kirigami.FormData.label: i18n("Show Heading:")
+				text: i18n("Show Heading")
+			}
+
+			ConfigCheckBox {
+				configKey: "showBackground"
+				text: i18n("Desktop Widget: Show background")
 			}
 		}
 	}
