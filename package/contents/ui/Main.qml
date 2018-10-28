@@ -56,7 +56,13 @@ Item {
 		onIssueStateChanged: debouncedUpdateIssuesModel.restart()
 	}
 
+	function action_refresh() {
+		debouncedUpdateIssuesModel.restart()
+	}
+
 	Component.onCompleted: {
+		plasmoid.setAction("refresh", i18n("Refresh"), "view-refresh")
+
 		updateIssuesModel()
 
 		// plasmoid.action("configure").trigger() // Uncomment to test config window
