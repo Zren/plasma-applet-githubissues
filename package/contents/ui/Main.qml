@@ -13,7 +13,7 @@ Item {
 	Logger {
 		id: logger
 		name: 'githubissues'
-		showDebug: true
+		// showDebug: true
 	}
 
 	Plasmoid.icon: plasmoid.file("", "icons/octicon-mark-github.svg")
@@ -48,7 +48,7 @@ Item {
 		id: debouncedUpdateIssuesModel
 		interval: 400
 		onTriggered: {
-			logger.debug('[githubissues] debouncedUpdateIssuesModel.onTriggered')
+			logger.debug('debouncedUpdateIssuesModel.onTriggered')
 			widget.updateIssuesModel()
 		}
 	}
@@ -58,7 +58,7 @@ Item {
 		repeat: true
 		interval: plasmoid.configuration.updateIntervalInMinutes * 60 * 1000
 		onTriggered: {
-			logger.debug('[githubissues] updateModelTimer.onTriggered')
+			logger.debug('updateModelTimer.onTriggered')
 			debouncedUpdateIssuesModel.restart()
 		}
 	}
