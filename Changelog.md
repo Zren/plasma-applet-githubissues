@@ -1,3 +1,9 @@
+## v2 - October 28 2018
+
+* Fix the update timer not running.
+* Add contextmenu action to manually refresh.
+* Cleanup debug logging.
+
 ## v1 - October 28 2018
 
 * Display first page of issues from a GitHub repo.
