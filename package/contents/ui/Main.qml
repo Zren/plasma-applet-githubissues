@@ -41,12 +41,20 @@ Item {
 	Timer {
 		id: debouncedUpdateIssuesModel
 		interval: 400
-		onTriggered: widget.updateIssuesModel()
+		onTriggered: {
+			console.log('[githubissues] debouncedUpdateIssuesModel.onTriggered')
+			widget.updateIssuesModel()
+		}
 	}
 	Timer {
 		id: updateModelTimer
-		interval: plasmoid.configuration.updateIntervalInMinutes
-		onTriggered: debouncedUpdateIssuesModel.restart()
+		running: true
+		repeat: true
+		interval: plasmoid.configuration.updateIntervalInMinutes * 60 * 1000
+		onTriggered: {
+			console.log('[githubissues] updateModelTimer.onTriggered')
+			debouncedUpdateIssuesModel.restart()
+		}
 	}
 
 	Connections {
