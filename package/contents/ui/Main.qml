@@ -10,6 +10,12 @@ import "lib/Requests.js" as Requests
 Item {
 	id: widget
 
+	Logger {
+		id: logger
+		name: 'githubissues'
+		showDebug: true
+	}
+
 	Plasmoid.icon: plasmoid.file("", "icons/octicon-mark-github.svg")
 	Plasmoid.backgroundHints: plasmoid.configuration.showBackground ? PlasmaCore.Types.DefaultBackground : PlasmaCore.Types.NoBackground
 	Plasmoid.hideOnWindowDeactivate: !plasmoid.userConfiguring
@@ -30,8 +36,8 @@ Item {
 			Requests.getJSON({
 				url: issuesUrl
 			}, function(err, data, xhr){
-				console.log(err)
-				console.log(data)
+				logger.debug(err)
+				logger.debugJSON(data)
 				widget.issuesModel = data
 			})
 		} else {
@@ -42,7 +48,7 @@ Item {
 		id: debouncedUpdateIssuesModel
 		interval: 400
 		onTriggered: {
-			console.log('[githubissues] debouncedUpdateIssuesModel.onTriggered')
+			logger.debug('[githubissues] debouncedUpdateIssuesModel.onTriggered')
 			widget.updateIssuesModel()
 		}
 	}
@@ -52,7 +58,7 @@ Item {
 		repeat: true
 		interval: plasmoid.configuration.updateIntervalInMinutes * 60 * 1000
 		onTriggered: {
-			console.log('[githubissues] updateModelTimer.onTriggered')
+			logger.debug('[githubissues] updateModelTimer.onTriggered')
 			debouncedUpdateIssuesModel.restart()
 		}
 	}
