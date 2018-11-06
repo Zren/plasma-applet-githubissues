@@ -7,12 +7,12 @@ url="https://github.com/Zren/plasma-applet-githubissues"
 arch=('x86_64')
 license=('GPL')
 depends=("plasma-desktop" "plasma-framework")
-makedepends=("make" "cmake" "git" "extra-cmake-modules")
+makedepends=("git")
 conflicts=()
 replaces=()
 backup=()
 install="plasma5-applets-kde-githubissues.install"
-source=("git+https://github.com/TobiichiAmane/plasma-applet-githubissues.git")
+source=("git+https://github.com/Zren/plasma-applet-githubissues.git")
 md5sums=("SKIP")
 
 pkgver() {
