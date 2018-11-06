@@ -20,6 +20,7 @@ pkgver() {
 }
 
 package() {
-	mkdir -p "$pkgdir/usr/share/plasma/plasmoids"
-	cp -r "$srcdir/plasma-applet-githubissues/package" "$pkgdir/usr/share/plasma/plasmoids/com.github.zren.githubissues"
+	#mkdir -p "$pkgdir/usr/share/plasma/plasmoids"
+	cd "$srcdir/plasma-applet-githubissues/package" 
+  find ./ -type f -exec install -Dm755 "{}" "$pkgdir/usr/share/plasma/plasmoids/com.github.zren.githubissues/{}" \;
 }
