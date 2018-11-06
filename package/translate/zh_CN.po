@@ -1,0 +1,109 @@
+# Translation of githubissues in zh_CN
+# Copyright (C) 2018
+# This file is distributed under the same license as the githubissues package.
+# Amane <tobiichiamane@outlook.com>, 2018.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: githubissues \n"
+"Report-Msgid-Bugs-To: https://github.com/Zren/plasma-applet-githubissues\n"
+"POT-Creation-Date: 2018-10-28 16:09-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Amane <tobiichiamane@outlook.com>\n"
+"Language-Team: none\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../contents/config/config.qml:7
+msgid "General"
+msgstr "一般"
+
+#: ../contents/ui/config/ConfigGeneral.qml:22
+msgid "User:"
+msgstr "用户/组织:"
+
+#: ../contents/ui/config/ConfigGeneral.qml:28
+msgid "Repo:"
+msgstr "仓库:"
+
+#: ../contents/ui/config/ConfigGeneral.qml:33
+msgid "Issues:"
+msgstr "Issues:"
+
+#: ../contents/ui/config/ConfigGeneral.qml:36
+msgid "Open Issues"
+msgstr "开启的Issues"
+
+#: ../contents/ui/config/ConfigGeneral.qml:37
+msgid "Closed Issues"
+msgstr "关闭的Issues"
+
+#: ../contents/ui/config/ConfigGeneral.qml:38
+msgid "Open + Closed Issues"
+msgstr "所有Issues"
+
+#: ../contents/ui/config/ConfigGeneral.qml:44
+msgid "Update Every:"
+msgstr "更新间隔:"
+
+#: ../contents/ui/config/ConfigGeneral.qml:53
+msgid "Show Heading"
+msgstr "显示Heading"
+
+#: ../contents/ui/config/ConfigGeneral.qml:58
+msgid "Desktop Widget: Show background"
+msgstr "桌面小部件: 显示背景"
+
+#: ../contents/ui/FullRepresentation.qml:163
+msgid "#%1 opened %2 by %3"
+msgstr "#%1 opened %2 by %3"
+
+#: ../contents/ui/FullRepresentation.qml:166
+msgid "#%1 by %3 was merged %2"
+msgstr "#%1 by %3 was merged %2"
+
+#: ../contents/ui/FullRepresentation.qml:168
+msgid "#%1 by %3 was closed %2"
+msgstr "#%1 by %3 was closed %2"
+
+#: ../contents/ui/lib/TimeUtils.js:22
+msgid "just now"
+msgstr "just now"
+
+#: ../contents/ui/lib/TimeUtils.js:25
+msgid "%1 minute ago"
+msgid_plural "%1 minutes ago"
+msgstr[0] "%1 minute ago"
+msgstr[1] "%1 minutes ago"
+
+#: ../contents/ui/lib/TimeUtils.js:28
+msgid "%1 hour ago"
+msgid_plural "%1 hours ago"
+msgstr[0] "%1 hour ago"
+msgstr[1] "%1 hours ago"
+
+#: ../contents/ui/lib/TimeUtils.js:31
+msgid "%1 day ago"
+msgid_plural "%1 days ago"
+msgstr[0] "%1 day ago"
+msgstr[1] "%1 days ago"
+
+#: ../contents/ui/lib/TimeUtils.js:34
+msgid "%1 month ago"
+msgid_plural "%1 months ago"
+msgstr[0] "%1 month ago"
+msgstr[1] "%1 months ago"
+
+#: ../contents/ui/lib/TimeUtils.js:37
+msgid "%1 year ago"
+msgid_plural "%1 years ago"
+msgstr[0] "%1 year ago"
+msgstr[1] "%1 years ago"
+
+#: ../contents/ui/Main.qml:78
+msgid "Refresh"
+msgstr "刷新"
