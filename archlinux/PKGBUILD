@@ -15,7 +15,12 @@ install="plasma5-applets-kde-githubissues.install"
 source=("git+https://github.com/TobiichiAmane/plasma-applet-githubissues.git")
 md5sums=("SKIP")
 
-package(){
+pkgver() {
+	cd "plasma-applet-githubissues" || exit 1
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
     mkdir -p "$pkgdir/usr/share/plasma/plasmoids"
 	cp -r "$srcdir/plasma-applet-githubissues/package" "$pkgdir/usr/share/plasma/plasmoids/org.kde.plasma.githubissues"
 }
