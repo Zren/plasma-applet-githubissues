@@ -42,10 +42,10 @@ ColumnLayout {
 			SpinBox {
 				id: updateIntervalInMinutesSpinBox
 				Kirigami.FormData.label: i18n("Update Every:")
-				Layout.fillWidth: true
 				stepSize: 5
 				minimumValue: 5
 				maximumValue: 24 * 60
+				suffix: i18nc("Polling interval in minutes", "min")
 			}
 
 			ConfigCheckBox {
