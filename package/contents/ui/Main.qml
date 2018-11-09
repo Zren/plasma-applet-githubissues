@@ -33,6 +33,7 @@ Item {
 
 	function updateIssuesModel() {
 		if (widget.hasRepo) {
+			logger.debug('issuesUrl', issuesUrl)
 			Requests.getJSON({
 				url: issuesUrl
 			}, function(err, data, xhr){
