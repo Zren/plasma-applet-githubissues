@@ -1,4 +1,4 @@
-// Version 1
+// Version 2
 
 import QtQuick 2.0
 
@@ -24,7 +24,7 @@ Rectangle {
 	TextLabel {
 		id: tagText
 		anchors.centerIn: parent
-		text: issue.product
+		text: ""
 		font.pointSize: -1
 		font.pixelSize: 12 * units.devicePixelRatio
 		lineHeight: 15 * units.devicePixelRatio
