@@ -12,7 +12,13 @@ IssueListView {
 
 	isSetup: widget.hasRepo
 	showHeading: plasmoid.configuration.showHeading
-	headingText: plasmoid.configuration.user + ' / ' + plasmoid.configuration.repo
+	headingText: {
+		if (plasmoid.configuration.headingText) {
+			return plasmoid.configuration.headingText
+		} else {
+			return plasmoid.configuration.user + ' / ' + plasmoid.configuration.repo
+		}
+	}
 
 	delegate: IssueListItem {
 		issueOpen: issue.state == 'open'

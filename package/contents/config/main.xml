@@ -25,6 +25,9 @@
     <entry name="showBackground" type="bool">
       <default>true</default>
     </entry>
+    <entry name="headingText" type="string">
+      <default></default>
+    </entry>
   </group>
 
 </kcfg>

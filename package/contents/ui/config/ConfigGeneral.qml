@@ -8,7 +8,10 @@ import "../lib"
 ColumnLayout {
 	property alias cfg_user: userTextField.text
 	property alias cfg_repo: repoTextField.text
+	property alias cfg_headingText: headingTextField.text
 	property alias cfg_updateIntervalInMinutes: updateIntervalInMinutesSpinBox.value
+
+	readonly property string defaultHeadingText: (cfg_user || i18n("User")) + " / " + (cfg_repo || i18n("Repo"))
 
 	ColumnLayout {
 		Layout.alignment: Qt.AlignTop
@@ -27,6 +30,13 @@ ColumnLayout {
 				id: repoTextField
 				Kirigami.FormData.label: i18n("Repo:")
 				Layout.fillWidth: true
+			}
+
+			TextField {
+				id: headingTextField
+				Kirigami.FormData.label: i18n("Heading:")
+				Layout.fillWidth: true
+				placeholderText: defaultHeadingText
 			}
 
 			ConfigRadioButtonGroup {
