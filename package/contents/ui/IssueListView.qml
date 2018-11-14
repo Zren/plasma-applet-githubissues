@@ -39,7 +39,8 @@ Item {
 			visible: issueListView.showHeading
 			text: issueListView.headingText
 			font.weight: Font.Bold
-			font.pixelSize: 24 * units.devicePixelRatio
+			font.pointSize: -1
+			font.pixelSize: 18 * units.devicePixelRatio
 			elide: Text.ElideRight
 			wrapMode: Text.NoWrap
 
