@@ -6,10 +6,7 @@
   <kcfgfile name=""/>
 
   <group name="General">
-    <entry name="user" type="string">
-      <default></default>
-    </entry>
-    <entry name="repo" type="string">
+    <entry name="repoList" type="StringList">
       <default></default>
     </entry>
     <entry name="updateIntervalInMinutes" type="int">
@@ -26,6 +23,15 @@
       <default>true</default>
     </entry>
     <entry name="headingText" type="string">
+      <default></default>
+    </entry>
+
+    <!-- Deprecated in v3 -->
+    <!-- Only kept for migration -->
+    <entry name="user" type="string">
+      <default></default>
+    </entry>
+    <entry name="repo" type="string">
       <default></default>
     </entry>
   </group>

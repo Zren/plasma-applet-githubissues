@@ -6,8 +6,6 @@ import org.kde.kirigami 2.5 as Kirigami
 import "../lib"
 
 ColumnLayout {
-	property alias cfg_user: userTextField.text
-	property alias cfg_repo: repoTextField.text
 	property alias cfg_headingText: headingTextField.text
 	property alias cfg_updateIntervalInMinutes: updateIntervalInMinutesSpinBox.value
 
@@ -20,16 +18,12 @@ ColumnLayout {
 			Layout.fillWidth: true
 			wideMode: true
 
-			TextField {
-				id: userTextField
-				Kirigami.FormData.label: i18n("User:")
+			ConfigStringList {
+				id: productTextField
+				Kirigami.FormData.label: i18n("Repos:")
+				configKey: 'repoList'
 				Layout.fillWidth: true
-			}
-
-			TextField {
-				id: repoTextField
-				Kirigami.FormData.label: i18n("Repo:")
-				Layout.fillWidth: true
+				placeholderText: i18n("User/Repo\nUser/Repo")
 			}
 
 			TextField {
