@@ -165,11 +165,10 @@ Rectangle {
 			color: messageWidget.labelColor
 		}
 
-		PlasmaComponents.ToolButton {
+		ToolButton {
 			id: closeButton
 			Layout.alignment: Qt.AlignVCenter
 			iconName: "dialog-close"
-			flat: true
 
 			onClicked: {
 				messageWidget.visible = false
