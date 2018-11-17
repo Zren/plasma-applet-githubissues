@@ -1,4 +1,4 @@
-// Version 2
+// Version 3
 
 import QtQuick 2.9
 import QtQuick.Controls 1.0
@@ -30,9 +30,12 @@ ColumnLayout {
 	property string issueState: 'opened'
 
 	property alias dateTime: timestampText.dateTime
-	property alias tagBefore: productTag.text
-	property alias tagBeforeTextColor: productTag.textColor
-	property alias tagBeforeBackgroundColor: productTag.backgroundColor
+	property alias tagAbove: issueTagAbove.text
+	property alias tagAboveTextColor: issueTagAbove.textColor
+	property alias tagAboveBackgroundColor: issueTagAbove.backgroundColor
+	property alias tagBefore: issueTagBefore.text
+	property alias tagBeforeTextColor: issueTagBefore.textColor
+	property alias tagBeforeBackgroundColor: issueTagBefore.backgroundColor
 
 	Rectangle {
 		visible: (heading.visible && index == 0) || index > 0
@@ -94,6 +97,10 @@ ColumnLayout {
 		ColumnLayout {
 			spacing: 4 * units.devicePixelRatio
 
+			IssueTag {
+				id: issueTagAbove
+			}
+
 			TextButton {
 				id: issueTitleLabel
 
@@ -104,31 +111,16 @@ ColumnLayout {
 				onClicked: Qt.openUrlExternally(issueListItem.issueHtmlLink)
 
 				onLineLaidOut: {
-					if (line.number == 0 && productTag.visible) {
-						var indent = productTag.width + productTag.rightMargin
+					if (line.number == 0 && issueTagBefore.visible) {
+						var indent = issueTagBefore.width + issueTagBefore.rightMargin
 						line.x += indent
 						line.width -= indent
 					}
 				}
 
-				TextTag {
-					id: productTag
-					visible: text
-
+				IssueTag {
+					id: issueTagBefore
 					onVisibleChanged: issueTitleLabel.forceLayout()
-
-					function alpha(c, a) {
-						return Qt.rgba(c.r, c.g, c.b, a)
-					}
-					function lerpColor(a, b, ratio) {
-						return Qt.tint(a, alpha(b, ratio))
-					}
-					backgroundColor: lerpColor(theme.backgroundColor, theme.textColor, 0.2)
-					textColor: lerpColor(theme.backgroundColor, theme.textColor, 0.85)
-					font.weight: Font.Bold
-					font.pixelSize: 12 * units.devicePixelRatio
-					lineHeight: 15 * units.devicePixelRatio
-					property int rightMargin: 4 * units.devicePixelRatio
 				}
 			}
 
