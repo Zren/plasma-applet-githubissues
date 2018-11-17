@@ -19,7 +19,7 @@ ColumnLayout {
 			wideMode: true
 
 			ConfigStringList {
-				id: productTextField
+				id: repoListTextField
 				Kirigami.FormData.label: i18n("Repos:")
 				configKey: 'repoList'
 				Layout.fillWidth: true
