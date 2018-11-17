@@ -1,4 +1,4 @@
-// Version 1
+// Version 2
 
 import QtQuick 2.0
 import QtQuick.Controls 1.0
@@ -20,6 +20,8 @@ RowLayout {
 
 	property alias textArea: textArea
 	property alias textAreaText: textArea.text
+	property alias textAreaFocus: textArea.focus
+	property alias placeholderText: placeholderTextLabel.text
 
 	function parseStringList(stringList) {
 		return stringList.toString().split(",")
@@ -101,6 +103,18 @@ RowLayout {
 		// text: parseValue(configStringList.value)
 		onTextChanged: serializeTimer.restart()
 		// onFocusChanged: console.log('textArea.focus', focus)
+
+		// Placeholder should be implemented in a proper QtQuick Style,
+		// but this is far easier.
+		Label {
+			id: placeholderTextLabel
+			anchors.fill: parent
+			anchors.margins: 6 * units.devicePixelRatio
+			visible: !textArea.text && !textArea.focus
+			horizontalAlignment: Text.AlignLeft
+			verticalAlignment: Text.AlignTop
+			opacity: 0.6
+		}
 	}
 
 	Label {
