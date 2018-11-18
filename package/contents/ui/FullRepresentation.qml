@@ -24,7 +24,14 @@ IssueListView {
 		issueOpen: issue.state == 'open'
 		issueId: issue.number
 		issueSummary: issue.title
-		// tagBefore: plasmoid.configuration.repo
+		tagAbove: {
+			if (widget.repoStringList.length >= 2) {
+				var repoFullName = issue.repository_url.substr('https://api.github.com/repos/'.length)
+				return repoFullName
+			} else {
+				return ""
+			}
+		}
 		issueCreatorName: issue.user.login
 		issueHtmlLink: issue.html_url
 		showNumComments: issue.comments > 0
