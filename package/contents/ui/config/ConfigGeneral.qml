@@ -29,6 +29,9 @@ ColumnLayout {
 			TextField {
 				id: headingTextField
 				Kirigami.FormData.label: i18n("Heading:")
+				Kirigami.FormData.checkable: true
+				Kirigami.FormData.checked: plasmoid.configuration.showHeading
+				Kirigami.FormData.onCheckedChanged: plasmoid.configuration.showHeading = Kirigami.FormData.checked
 				Layout.fillWidth: true
 				placeholderText: defaultHeadingText
 			}
@@ -58,11 +61,6 @@ ColumnLayout {
 				minimumValue: 5
 				maximumValue: 24 * 60
 				suffix: i18nc("Polling interval in minutes", "min")
-			}
-
-			ConfigCheckBox {
-				configKey: "showHeading"
-				text: i18n("Show Heading")
 			}
 
 			ConfigCheckBox {
