@@ -1,4 +1,4 @@
-// Version 1
+// Version 2
 
 import QtQuick 2.0
 import QtQuick.Controls 1.2
@@ -17,6 +17,7 @@ Rectangle {
 	property alias text: label.text
 	property alias wrapMode: label.wrapMode
 	property alias closeButtonVisible: closeButton.visible
+	property alias animate: visibleAnimation.enabled
 
 	property int messageType: warning
 	property int positive: 0
@@ -24,9 +25,7 @@ Rectangle {
 	property int warning: 2
 	property int error: 3
 
-	visible: false
 	clip: true
-	height: 0
 	radius: 5
 	border.width: 1
 
@@ -116,10 +115,22 @@ Rectangle {
 		GradientStop { position: 1.0; color: Qt.darker(messageWidget.gradBaseColor, 1.1) }
 	}
 
-	Layout.minimumHeight: 0
-	Layout.preferredHeight: Layout.minimumHeight
 	readonly property int expandedHeight: layout.implicitHeight + (2 * layout.anchors.margins)
+	
+	visible: text
+	opacity: visible ? 1.0 : 0
+	implicitHeight: visible ? messageWidget.expandedHeight : 0
+
+	Component.onCompleted: {
+		// Remove bindings
+		visible = visible
+		opacity = opacity
+		implicitHeight = implicitHeight
+	}
+
 	Behavior on visible {
+		id: visibleAnimation
+
 		ParallelAnimation {
 			PropertyAnimation {
 				target: messageWidget
@@ -129,13 +140,7 @@ Rectangle {
 			}
 			PropertyAnimation {
 				target: messageWidget
-				property: "Layout.minimumHeight"
-				to: messageWidget.visible ? 0 : messageWidget.expandedHeight
-				easing.type: Easing.Linear
-			}
-			PropertyAnimation {
-				target: messageWidget
-				property: "Layout.preferredHeight"
+				property: "implicitHeight"
 				to: messageWidget.visible ? 0 : messageWidget.expandedHeight
 				easing.type: Easing.Linear
 			}
