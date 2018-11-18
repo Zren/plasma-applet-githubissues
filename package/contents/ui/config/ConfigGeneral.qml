@@ -43,6 +43,14 @@ ColumnLayout {
 				]
 			}
 
+			MessageWidget {
+				text: i18n("Every IP can only perform 60 API requests to GitHub per hour.\nEach repository listed is 1 request.")
+				messageType: information
+				visible: true
+				closeButtonVisible: false
+				Layout.fillWidth: true
+			}
+
 			SpinBox {
 				id: updateIntervalInMinutesSpinBox
 				Kirigami.FormData.label: i18n("Update Every:")
