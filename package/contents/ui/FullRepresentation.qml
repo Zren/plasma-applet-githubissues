@@ -10,13 +10,13 @@ import "lib/TimeUtils.js" as TimeUtils
 IssueListView {
 	id: issueListView
 
-	isSetup: widget.hasRepo
+	isSetup: widget.repoStringList.length >= 1
 	showHeading: plasmoid.configuration.showHeading
 	headingText: {
 		if (plasmoid.configuration.headingText) {
 			return plasmoid.configuration.headingText
 		} else {
-			return plasmoid.configuration.user + ' / ' + plasmoid.configuration.repo
+			return widget.repoStringList.join(', ')
 		}
 	}
 
