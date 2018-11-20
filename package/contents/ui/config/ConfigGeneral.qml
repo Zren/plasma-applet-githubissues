@@ -6,10 +6,9 @@ import org.kde.kirigami 2.5 as Kirigami
 import "../lib"
 
 ColumnLayout {
+	property var cfg_repoList
 	property alias cfg_headingText: headingTextField.text
 	property alias cfg_updateIntervalInMinutes: updateIntervalInMinutesSpinBox.value
-
-	readonly property string defaultHeadingText: (cfg_user || i18n("User")) + " / " + (cfg_repo || i18n("Repo"))
 
 	ColumnLayout {
 		Layout.alignment: Qt.AlignTop
@@ -21,9 +20,10 @@ ColumnLayout {
 			ConfigStringList {
 				id: repoListTextField
 				Kirigami.FormData.label: i18n("Repos:")
-				configKey: 'repoList'
 				Layout.fillWidth: true
 				placeholderText: i18n("User/Repo\nUser/Repo")
+				textAreaText: parseValue(cfg_repoList)
+				onTextAreaTextChanged: cfg_repoList = parseText(textAreaText)
 			}
 
 			TextField {
@@ -33,7 +33,6 @@ ColumnLayout {
 				Kirigami.FormData.checked: plasmoid.configuration.showHeading
 				Kirigami.FormData.onCheckedChanged: plasmoid.configuration.showHeading = Kirigami.FormData.checked
 				Layout.fillWidth: true
-				placeholderText: defaultHeadingText
 			}
 
 			ConfigRadioButtonGroup {
