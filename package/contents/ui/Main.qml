@@ -31,10 +31,8 @@ Item {
 
 	LocalDb {
 		id: localDb
-		name: "com.github.zren.githubissues"
-		version: "1"
-		description: "KDE Plasma widget"
-		estimatedSize: 1 * 1024 * 1024 // 1 MiB
+		name: plasmoid.pluginName
+		version: "1" // DB version, not Widget version
 	}
 
 	Plasmoid.fullRepresentation: FullRepresentation {}
