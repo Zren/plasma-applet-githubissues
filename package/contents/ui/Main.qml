@@ -66,8 +66,7 @@ Item {
 
 	Connections {
 		target: plasmoid.configuration
-		onUserChanged: debouncedUpdateIssuesModel.restart()
-		onRepoChanged: debouncedUpdateIssuesModel.restart()
+		onRepoListChanged: debouncedUpdateIssuesModel.restart()
 		onIssueStateChanged: debouncedUpdateIssuesModel.restart()
 	}
 
