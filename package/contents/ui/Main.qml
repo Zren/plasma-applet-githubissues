@@ -129,9 +129,18 @@ Item {
 	function issueCreatedDate(issue) {
 		return new Date(issue.created_at).valueOf()
 	}
+	function concatLists(arr) {
+		if (arr.length >= 2) {
+			return Array.prototype.concat.apply(arr[0], arr.slice(1))
+		} else if (arr.length == 1) {
+			return arr[0]
+		} else {
+			return []
+		}
+	}
 	function parseResults(results) {
 		// Concat all issue lists
-		var issues = Array.prototype.concat.apply(results[0], results.slice(1))
+		var issues = concatLists(results)
 		
 		// Sort issues by creation date descending
 		issues = issues.sort(function(a, b){
