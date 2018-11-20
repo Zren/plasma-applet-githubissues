@@ -21,12 +21,21 @@ Item {
 	Plasmoid.backgroundHints: plasmoid.configuration.showBackground ? PlasmaCore.Types.DefaultBackground : PlasmaCore.Types.NoBackground
 	Plasmoid.hideOnWindowDeactivate: !plasmoid.userConfiguring
 
+	readonly property int updateIntervalInMillis: plasmoid.configuration.updateIntervalInMinutes * 60 * 1000
 	readonly property string issueState: plasmoid.configuration.issueState
 	readonly property var repoStringList: plasmoid.configuration.repoList
 
 	property var issuesModel: []
 
 	Octicons { id: octicons }
+
+	LocalDb {
+		id: localDb
+		name: "com.github.zren.githubissues"
+		version: "1"
+		description: "KDE Plasma widget"
+		estimatedSize: 1 * 1024 * 1024 // 1 MiB
+	}
 
 	Plasmoid.fullRepresentation: FullRepresentation {}
 
@@ -57,13 +66,49 @@ Item {
 		})
 	}
 
+	function hasExpired(dt, ttl) {
+		var now = new Date()
+		var diff = now.getTime() - dt.getTime()
+		logger.debug('now:', now.getTime(), now)
+		logger.debug('dt: ', dt.getTime(), dt)
+		logger.debug('(diff-ttl):', diff, '-', ttl, '=', (diff-ttl), '(diff >= ttl):', diff >= ttl)
+		return diff >= ttl
+	}
+
+	function getIssueList(repoString, issueState, callback) {
+		logger.debug('getIssueList', repoString, issueState)
+		localDb.getJSON(repoString, function(err, data, row){
+			logger.debug('getJSON', repoString, data)
+
+			var shouldUpdate = true
+			if (data) {
+				// Can we assume the timestamp is always UTC?
+				// The 'Z' parses the timestamp in UTC.
+				// Maybe check the length of the string?
+				var rowUpdatedAt = new Date(row.updated_at + 'Z')
+				var ttl = widget.updateIntervalInMillis
+				shouldUpdate = hasExpired(rowUpdatedAt, ttl)
+			}
+			logger.debug('shouldUpdate', shouldUpdate)
+
+			if (shouldUpdate) {
+				fetchIssues(repoString, issueState, function(err, data) {
+					localDb.setJSON(repoString, data, function(err){
+						logger.debug('setJSON', repoString)
+						callback(err, data)
+					})
+				})
+			}
+		})
+	}
+
 	function updateIssuesModel() {
 		logger.debug('updateIssuesModel')
 
 		var tasks = []
 		for (var i = 0; i < repoStringList.length; i++) {
 			var repoString = repoStringList[i]
-			var task = fetchIssues.bind(null, repoString, 'all')
+			var task = getIssueList.bind(null, repoString, 'all')
 			tasks.push(task)
 		}
 
@@ -108,7 +153,7 @@ Item {
 		id: updateModelTimer
 		running: true
 		repeat: true
-		interval: plasmoid.configuration.updateIntervalInMinutes * 60 * 1000
+		interval: widget.updateIntervalInMillis
 		onTriggered: {
 			logger.debug('updateModelTimer.onTriggered')
 			debouncedUpdateIssuesModel.restart()
@@ -128,7 +173,9 @@ Item {
 	Component.onCompleted: {
 		plasmoid.setAction("refresh", i18n("Refresh"), "view-refresh")
 
-		updateIssuesModel()
+		localDb.initDb(function(err){
+			updateIssuesModel()
+		})
 
 		// plasmoid.action("configure").trigger() // Uncomment to test config window
 	}
