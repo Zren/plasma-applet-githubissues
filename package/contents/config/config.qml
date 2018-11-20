@@ -8,4 +8,10 @@ ConfigModel {
 		icon: "configure"
 		source: "config/ConfigGeneral.qml"
 	}
+	ConfigCategory {
+		name: i18n("Debug: LocalDB")
+		icon: "application-x-sqlite3"
+		source: "lib/ConfigLocalDBView.qml"
+		visible: false
+	}
 }
