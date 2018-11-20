@@ -131,7 +131,7 @@ QtObject {
 		logger.debug('db.deleteAll.start')
 		db.transaction(function(tx) {
 			var rs = tx.executeSql('DELETE FROM KeyValue')
-			logger.debug('db.getAll.done')
+			logger.debug('db.deleteAll.done')
 			callback(null)
 		})
 	}
