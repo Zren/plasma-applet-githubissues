@@ -5,7 +5,10 @@ import org.kde.kirigami 2.5 as Kirigami
 
 import "../lib"
 
-ColumnLayout {
+ConfigPage {
+	id: page
+	showAppletVersion: true
+
 	property var cfg_repoList
 	property alias cfg_headingText: headingTextField.text
 	property alias cfg_updateIntervalInMinutes: updateIntervalInMinutesSpinBox.value
