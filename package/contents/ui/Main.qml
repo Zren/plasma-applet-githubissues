@@ -102,6 +102,10 @@ Item {
 		})
 	}
 
+	function deleteIssueListCache(callback) {
+		localDb.deleteAll(callback)
+	}
+
 	function updateIssuesModel() {
 		logger.debug('updateIssuesModel')
 
@@ -172,7 +176,11 @@ Item {
 	Connections {
 		target: plasmoid.configuration
 		onRepoListChanged: debouncedUpdateIssuesModel.restart()
-		onIssueStateChanged: debouncedUpdateIssuesModel.restart()
+		onIssueStateChanged: {
+			deleteIssueListCache(function() {
+				debouncedUpdateIssuesModel.restart()
+			})
+		}
 	}
 
 	function action_refresh() {

@@ -126,4 +126,13 @@ QtObject {
 			}
 		})
 	}
+
+	function deleteAll(callback) {
+		logger.debug('db.deleteAll.start')
+		db.transaction(function(tx) {
+			var rs = tx.executeSql('DELETE FROM KeyValue')
+			logger.debug('db.getAll.done')
+			callback(null)
+		})
+	}
 }
