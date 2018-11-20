@@ -33,6 +33,7 @@ Item {
 		id: localDb
 		name: plasmoid.pluginName
 		version: "1" // DB version, not Widget version
+		showDebug: logger.showDebug
 	}
 
 	Plasmoid.fullRepresentation: FullRepresentation {}

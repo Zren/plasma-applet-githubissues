@@ -12,7 +12,7 @@ QtObject {
 	property int estimatedSize: 1 * 1024 * 1024 // 1 MiB
 	property var db: null
 
-	property var logger: Logger {
+	property var loggerObj: Logger {
 		id: logger
 		name: 'localdb'
 		// showDebug: true
