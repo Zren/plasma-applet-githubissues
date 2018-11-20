@@ -96,6 +96,8 @@ Item {
 						callback(err, data)
 					})
 				})
+			} else {
+				callback(err, data)
 			}
 		})
 	}
