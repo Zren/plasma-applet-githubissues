@@ -1,8 +1,8 @@
-// Version 1
+// Version 2
 
 import QtQuick 2.0
 
-Item {
+QtObject {
 	id: logger
 	property string name: 'logger'
 	property bool showDebug: false
