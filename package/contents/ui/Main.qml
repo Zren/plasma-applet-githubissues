@@ -112,7 +112,7 @@ Item {
 		var tasks = []
 		for (var i = 0; i < repoStringList.length; i++) {
 			var repoString = repoStringList[i]
-			var task = getIssueList.bind(null, repoString, 'all')
+			var task = getIssueList.bind(null, repoString, plasmoid.configuration.issueState)
 			tasks.push(task)
 		}
 
