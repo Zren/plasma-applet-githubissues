@@ -36,6 +36,7 @@ ConfigPage {
 				Kirigami.FormData.checked: plasmoid.configuration.showHeading
 				Kirigami.FormData.onCheckedChanged: plasmoid.configuration.showHeading = Kirigami.FormData.checked
 				Layout.fillWidth: true
+				placeholderText: cfg_repoList.join(', ')
 			}
 
 			ConfigRadioButtonGroup {
