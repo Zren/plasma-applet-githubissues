@@ -17,6 +17,7 @@ QtObject {
 		name: 'localdb'
 		// showDebug: true
 	}
+	property alias showDebug: logger.showDebug
 
 	function initDb(callback) {
 		logger.debug('initDb.start')
