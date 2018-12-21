@@ -24,7 +24,7 @@ IssueListView {
 		issueOpen: issue.state == 'open'
 		issueId: issue.number
 		issueSummary: issue.title
-		tagAbove: {
+		category: {
 			if (widget.repoStringList.length >= 2) {
 				var repoFullName = issue.repository_url.substr('https://api.github.com/repos/'.length)
 				return repoFullName

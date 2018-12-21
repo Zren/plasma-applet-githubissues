@@ -25,8 +25,26 @@ ConfigPage {
 				Kirigami.FormData.label: i18n("Repos:")
 				Layout.fillWidth: true
 				placeholderText: i18n("User/Repo\nUser/Repo")
-				textAreaText: parseValue(cfg_repoList)
-				onTextAreaTextChanged: cfg_repoList = parseText(textAreaText)
+				// textAreaText: parseValue(cfg_repoList)
+				textAreaText: listToStr(cfg_repoList)
+				onTextAreaTextChanged: {
+					if (textAreaFocus && writeOnChange) {
+						writeOnChange = false
+						cfg_repoList = strToList(textAreaText)
+						writeOnChange = true
+					}
+				}
+				property bool writeOnChange: true
+
+				function listToStr(val) {
+					console.log('cfg_repoList R', val, typeof val)
+					return parseValue(val)
+				}
+				function strToList(val) {
+					console.log('cfg_repoList W', val, parseText(val))
+					// cfg_repoList = serialize(textAreaText)
+					return parseText(val)
+				}
 			}
 
 			TextField {
