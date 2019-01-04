@@ -103,8 +103,14 @@ Item {
 		})
 	}
 
-	function deleteIssueListCache(callback) {
+	function deleteCache(callback) {
 		localDb.deleteAll(callback)
+	}
+
+	function deleteCacheAndReload() {
+		deleteCache(function() {
+			debouncedUpdateIssuesModel.restart()
+		})
 	}
 
 	function updateIssuesModel() {
@@ -177,17 +183,11 @@ Item {
 	Connections {
 		target: plasmoid.configuration
 		onRepoListChanged: debouncedUpdateIssuesModel.restart()
-		onIssueStateChanged: {
-			deleteIssueListCache(function() {
-				debouncedUpdateIssuesModel.restart()
-			})
-		}
+		onIssueStateChanged: deleteCacheAndReload()
 	}
 
 	function action_refresh() {
-		deleteIssueListCache(function() {
-			debouncedUpdateIssuesModel.restart()
-		})
+		deleteCacheAndReload()
 	}
 
 	Component.onCompleted: {
