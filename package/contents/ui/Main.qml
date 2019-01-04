@@ -185,7 +185,9 @@ Item {
 	}
 
 	function action_refresh() {
-		debouncedUpdateIssuesModel.restart()
+		deleteIssueListCache(function() {
+			debouncedUpdateIssuesModel.restart()
+		})
 	}
 
 	Component.onCompleted: {
