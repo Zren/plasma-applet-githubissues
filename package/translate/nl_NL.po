@@ -91,7 +91,7 @@ msgstr "%1 van %3 is samengevoegd %2"
 
 #: ../contents/ui/lib/AppletVersion.qml:41
 msgid "<b>Version:</b> %1"
-msgstr ""
+msgstr "<b>Versie:</b> %1"
 
 #: ../contents/ui/lib/ConfigLocalDBView.qml:44
 msgid "Key"
