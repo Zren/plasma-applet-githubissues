@@ -9,7 +9,7 @@ ConfigPage {
 	id: page
 	showAppletVersion: true
 
-	property var cfg_repoList
+	property var cfg_repoList: []
 	property alias cfg_headingText: headingTextField.text
 	property alias cfg_updateIntervalInMinutes: updateIntervalInMinutesSpinBox.value
 
@@ -37,11 +37,11 @@ ConfigPage {
 				property bool writeOnChange: true
 
 				function listToStr(val) {
-					console.log('cfg_repoList R', val, typeof val)
+					// console.log('cfg_repoList R', val, typeof val)
 					return parseValue(val)
 				}
 				function strToList(val) {
-					console.log('cfg_repoList W', val, parseText(val))
+					// console.log('cfg_repoList W', val, parseText(val))
 					// cfg_repoList = serialize(textAreaText)
 					return parseText(val)
 				}
