@@ -73,6 +73,7 @@ ConfigPage {
 				visible: true
 				closeButtonVisible: false
 				Layout.fillWidth: true
+				Layout.preferredWidth: units.gridUnit * 20
 			}
 
 			SpinBox {
