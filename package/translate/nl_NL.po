@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: githubissues\n"
 "Report-Msgid-Bugs-To: https://github.com/Zren/plasma-applet-githubissues\n"
 "POT-Creation-Date: 2019-01-25 13:48-0500\n"
-"PO-Revision-Date: 2019-01-25 12:25+0100\n"
+"PO-Revision-Date: 2019-01-25 20:46+0100\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <vistausss@outlook.com>\n"
 "Language: nl_NL\n"
@@ -24,11 +24,11 @@ msgstr "Algemeen"
 
 #: ../contents/config/config.qml:12
 msgid "Debug: LocalDB"
-msgstr ""
+msgstr "Foutopsporing: LocalDB"
 
 #: ../contents/ui/config/ConfigGeneral.qml:25
 msgid "Repos:"
-msgstr ""
+msgstr "Repo's:"
 
 #: ../contents/ui/config/ConfigGeneral.qml:27
 msgid ""
@@ -40,7 +40,7 @@ msgstr ""
 
 #: ../contents/ui/config/ConfigGeneral.qml:52
 msgid "Heading:"
-msgstr ""
+msgstr "Kop:"
 
 #: ../contents/ui/config/ConfigGeneral.qml:61
 msgid "Issues:"
@@ -63,6 +63,8 @@ msgid ""
 "Every IP can only perform 60 API requests to GitHub per hour.\n"
 "Each repository listed is 1 request."
 msgstr ""
+"Elk IP-adres kan 60 API-verzoeken per uur uitvoeren naar GitHub.\n"
+"Elke genoemde repository telt als 1 verzoek."
 
 #: ../contents/ui/config/ConfigGeneral.qml:80
 msgid "Update Every:"
@@ -95,11 +97,11 @@ msgstr "<b>Versie:</b> %1"
 
 #: ../contents/ui/lib/ConfigLocalDBView.qml:44
 msgid "Key"
-msgstr ""
+msgstr "Sleutel"
 
 #: ../contents/ui/lib/ConfigLocalDBView.qml:49
 msgid "Value"
-msgstr ""
+msgstr "Waarde"
 
 #: ../contents/ui/lib/TimeUtils.js:22
 msgid "just now"
