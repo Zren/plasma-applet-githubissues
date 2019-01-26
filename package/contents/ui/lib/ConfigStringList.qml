@@ -1,4 +1,4 @@
-// Version 2
+// Version 3
 
 import QtQuick 2.0
 import QtQuick.Controls 1.0
@@ -27,10 +27,18 @@ RowLayout {
 		return stringList.toString().split(",")
 	}
 	function parseValue(value) {
-		return value.join("\n")
+		if (value) {
+			return value.join("\n")
+		} else {
+			return ""
+		}
 	}
 	function parseText(text) {
-		return text.split("\n")
+		if (text) {
+			return text.split("\n")
+		} else {
+			return []
+		}
 	}
 
 	function setValue(val) {
