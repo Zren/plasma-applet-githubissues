@@ -1,4 +1,4 @@
-// Version 3
+// Version 4
 
 import QtQuick 2.0
 import QtQuick.Controls 1.0
@@ -57,7 +57,7 @@ RowLayout {
 	function serialize() {
 		var newValue = parseText(textArea.text)
 		// console.log('serialize', configKey, newValue)
-		if (plasmoid.configuration[configKey] != newValue) {
+		if (configKey && plasmoid.configuration[configKey] != newValue) {
 			plasmoid.configuration[configKey] = newValue
 		}
 	}
