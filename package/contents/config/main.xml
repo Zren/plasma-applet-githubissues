@@ -22,6 +22,9 @@
 		<entry name="headingText" type="string">
 			<default></default>
 		</entry>
+		<entry name="icon" type="string">
+			<default>octicon-mark-github</default>
+		</entry>
 
 		<!-- Deprecated in v3 -->
 		<!-- Only kept for migration -->

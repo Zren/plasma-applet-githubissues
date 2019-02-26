@@ -17,7 +17,6 @@ Item {
 		// showDebug: true
 	}
 
-	Plasmoid.icon: plasmoid.file("", "icons/octicon-mark-github.svg")
 	Plasmoid.backgroundHints: plasmoid.configuration.showBackground ? PlasmaCore.Types.DefaultBackground : PlasmaCore.Types.NoBackground
 	Plasmoid.hideOnWindowDeactivate: !plasmoid.userConfiguring
 
@@ -35,6 +34,10 @@ Item {
 		version: "1" // DB version, not Widget version
 		showDebug: logger.showDebug
 	}
+
+	Plasmoid.icon: panelItem.iconSource
+	Plasmoid.compactRepresentation: CompactRepresentation { id: panelItem }
+	Plasmoid.activationTogglesExpanded: true
 
 	Plasmoid.fullRepresentation: FullRepresentation {}
 
