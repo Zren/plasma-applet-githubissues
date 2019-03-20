@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: githubissues\n"
 "Report-Msgid-Bugs-To: https://github.com/Zren/plasma-applet-githubissues\n"
-"POT-Creation-Date: 2019-01-25 13:48-0500\n"
+"POT-Creation-Date: 2019-03-20 12:51-0400\n"
 "PO-Revision-Date: 2019-01-25 20:46+0100\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <vistausss@outlook.com>\n"
@@ -26,11 +26,11 @@ msgstr "Algemeen"
 msgid "Debug: LocalDB"
 msgstr "Foutopsporing: LocalDB"
 
-#: ../contents/ui/config/ConfigGeneral.qml:25
+#: ../contents/ui/config/ConfigGeneral.qml:33
 msgid "Repos:"
 msgstr "Repo's:"
 
-#: ../contents/ui/config/ConfigGeneral.qml:27
+#: ../contents/ui/config/ConfigGeneral.qml:35
 msgid ""
 "User/Repo\n"
 "User/Repo"
@@ -38,27 +38,27 @@ msgstr ""
 "Gebruiker/Repo\n"
 "Gebruiker/Repo"
 
-#: ../contents/ui/config/ConfigGeneral.qml:52
+#: ../contents/ui/config/ConfigGeneral.qml:64
 msgid "Heading:"
 msgstr "Kop:"
 
-#: ../contents/ui/config/ConfigGeneral.qml:61
+#: ../contents/ui/config/ConfigGeneral.qml:73
 msgid "Issues:"
 msgstr "Issues:"
 
-#: ../contents/ui/config/ConfigGeneral.qml:64
+#: ../contents/ui/config/ConfigGeneral.qml:76
 msgid "Open Issues"
 msgstr "Geopende issues"
 
-#: ../contents/ui/config/ConfigGeneral.qml:65
+#: ../contents/ui/config/ConfigGeneral.qml:77
 msgid "Closed Issues"
 msgstr "Gesloten issues"
 
-#: ../contents/ui/config/ConfigGeneral.qml:66
+#: ../contents/ui/config/ConfigGeneral.qml:78
 msgid "Open + Closed Issues"
 msgstr "Geopende en gesloten issues"
 
-#: ../contents/ui/config/ConfigGeneral.qml:71
+#: ../contents/ui/config/ConfigGeneral.qml:83
 msgid ""
 "Every IP can only perform 60 API requests to GitHub per hour.\n"
 "Each repository listed is 1 request."
@@ -66,16 +66,16 @@ msgstr ""
 "Elk IP-adres kan 60 API-verzoeken per uur uitvoeren naar GitHub.\n"
 "Elke genoemde repository telt als 1 verzoek."
 
-#: ../contents/ui/config/ConfigGeneral.qml:80
+#: ../contents/ui/config/ConfigGeneral.qml:93
 msgid "Update Every:"
 msgstr "Bijwerken, elke:"
 
-#: ../contents/ui/config/ConfigGeneral.qml:84
+#: ../contents/ui/config/ConfigGeneral.qml:97
 msgctxt "Polling interval in minutes"
 msgid "min"
 msgstr "min"
 
-#: ../contents/ui/config/ConfigGeneral.qml:89
+#: ../contents/ui/config/ConfigGeneral.qml:102
 msgid "Desktop Widget: Show background"
 msgstr "Bureaubladwidget: achtergrond tonen"
 
@@ -137,7 +137,7 @@ msgid_plural "%1 years ago"
 msgstr[0] "%1 jaar geleden"
 msgstr[1] "%1 jaar geleden"
 
-#: ../contents/ui/Main.qml:194
+#: ../contents/ui/Main.qml:197
 msgid "Refresh"
 msgstr "Vernieuwen"
 

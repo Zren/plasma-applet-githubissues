@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: githubissues \n"
 "Report-Msgid-Bugs-To: https://github.com/Zren/plasma-applet-githubissues\n"
-"POT-Creation-Date: 2019-01-25 13:48-0500\n"
+"POT-Creation-Date: 2019-03-20 12:51-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,52 +26,52 @@ msgstr ""
 msgid "Debug: LocalDB"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:25
+#: ../contents/ui/config/ConfigGeneral.qml:33
 msgid "Repos:"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:27
+#: ../contents/ui/config/ConfigGeneral.qml:35
 msgid ""
 "User/Repo\n"
 "User/Repo"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:52
+#: ../contents/ui/config/ConfigGeneral.qml:64
 msgid "Heading:"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:61
+#: ../contents/ui/config/ConfigGeneral.qml:73
 msgid "Issues:"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:64
+#: ../contents/ui/config/ConfigGeneral.qml:76
 msgid "Open Issues"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:65
+#: ../contents/ui/config/ConfigGeneral.qml:77
 msgid "Closed Issues"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:66
+#: ../contents/ui/config/ConfigGeneral.qml:78
 msgid "Open + Closed Issues"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:71
+#: ../contents/ui/config/ConfigGeneral.qml:83
 msgid ""
 "Every IP can only perform 60 API requests to GitHub per hour.\n"
 "Each repository listed is 1 request."
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:80
+#: ../contents/ui/config/ConfigGeneral.qml:93
 msgid "Update Every:"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:84
+#: ../contents/ui/config/ConfigGeneral.qml:97
 msgctxt "Polling interval in minutes"
 msgid "min"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:89
+#: ../contents/ui/config/ConfigGeneral.qml:102
 msgid "Desktop Widget: Show background"
 msgstr ""
 
@@ -133,6 +133,6 @@ msgid_plural "%1 years ago"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../contents/ui/Main.qml:194
+#: ../contents/ui/Main.qml:197
 msgid "Refresh"
 msgstr ""
