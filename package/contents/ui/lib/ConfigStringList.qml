@@ -1,4 +1,4 @@
-// Version 4
+// Version 5
 
 import QtQuick 2.0
 import QtQuick.Controls 1.0
@@ -49,8 +49,7 @@ RowLayout {
 	}
 
 	function deserialize() {
-		// console.log('deserialize', configValue)
-		if (!textArea.focus) {
+		if (configKey && !textArea.focus) {
 			setValue(value)
 		}
 	}
