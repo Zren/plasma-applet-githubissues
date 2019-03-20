@@ -43,7 +43,6 @@ Item {
 	AppletIcon {
 		id: icon
 		anchors.fill: parent
-		visible: !unityThemeDetector.useUnityTheme
 
 		source: plasmoid.configuration.icon
 		active: mouseArea.containsMouse
