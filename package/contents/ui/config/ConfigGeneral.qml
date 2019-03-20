@@ -13,6 +13,14 @@ ConfigPage {
 	property alias cfg_headingText: headingTextField.text
 	property alias cfg_updateIntervalInMinutes: updateIntervalInMinutesSpinBox.value
 
+	Component.onCompleted: {
+		// console.log('ConfigGeneral.onCompleted')
+		// console.log('\t cfg_repoList', cfg_repoList, typeof cfg_repoList)
+		// console.log('\t repoListTextField.textAreaText', repoListTextField.textAreaText, typeof repoListTextField.textAreaText)
+		// console.log('\t repoListTextField.textArea.text', repoListTextField.textArea.text, typeof repoListTextField.textArea.text)
+	}
+	// onCfg_repoListChanged: console.log('cfg_repoList onChanged', cfg_repoList, typeof cfg_repoList)
+
 	ColumnLayout {
 		Layout.alignment: Qt.AlignTop
 
@@ -25,9 +33,10 @@ ConfigPage {
 				Kirigami.FormData.label: i18n("Repos:")
 				Layout.fillWidth: true
 				placeholderText: i18n("User/Repo\nUser/Repo")
-				// textAreaText: parseValue(cfg_repoList)
-				textAreaText: listToStr(cfg_repoList)
-				onTextAreaTextChanged: {
+				textArea.text: listToStr(cfg_repoList)
+				textArea.onTextChanged: {
+					// console.log('repoListTextField.onTextChanged', textArea.text)
+					// console.log('\t textAreaFocus && writeOnChange', textAreaFocus && writeOnChange)
 					if (textAreaFocus && writeOnChange) {
 						writeOnChange = false
 						cfg_repoList = strToList(textAreaText)
@@ -38,12 +47,15 @@ ConfigPage {
 
 				function listToStr(val) {
 					// console.log('cfg_repoList R', val, typeof val)
-					return parseValue(val)
+					var str = parseValue(val)
+					// console.log('\t str', str, typeof str)
+					return str
 				}
 				function strToList(val) {
 					// console.log('cfg_repoList W', val, parseText(val))
-					// cfg_repoList = serialize(textAreaText)
-					return parseText(val)
+					var list = parseText(val)
+					// console.log('\t list', list, typeof list)
+					return list
 				}
 			}
 
