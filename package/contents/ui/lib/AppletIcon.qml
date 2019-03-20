@@ -1,4 +1,4 @@
-// Version: 2
+// Version: 3
 
 import QtQuick 2.0
 import org.kde.plasma.core 2.0 as PlasmaCore
@@ -23,9 +23,9 @@ Item {
 	PlasmaCore.SvgItem {
 		id: svgItem
 		anchors.centerIn: parent
-		readonly property real maxSize: Math.min(naturalSize.width, naturalSize.height)
-		readonly property real widthRatio: naturalSize.width / maxSize
-		readonly property real heightRatio: naturalSize.height / maxSize
+		readonly property real minSize: Math.min(naturalSize.width, naturalSize.height)
+		readonly property real widthRatio: naturalSize.width / svgItem.minSize
+		readonly property real heightRatio: naturalSize.height / svgItem.minSize
 		width: appletIcon.minSize * widthRatio
 		height: appletIcon.minSize * heightRatio
 
