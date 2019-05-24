@@ -22,7 +22,21 @@ Item {
 
 	readonly property int updateIntervalInMillis: plasmoid.configuration.updateIntervalInMinutes * 60 * 1000
 	readonly property string issueState: plasmoid.configuration.issueState
-	readonly property var repoStringList: plasmoid.configuration.repoList
+	readonly property var repoStringRegex: /^([^\/]+)(\/)([^\/]+)$/
+	readonly property var repoStringList: {
+		var out = []
+		var arr = plasmoid.configuration.repoList
+		for (var i = 0; i < arr.length; i++) {
+			var repoString = arr[i]
+			repoString = repoString.trim()
+			if (repoString.match(repoStringRegex)) {
+				out.push(repoString)
+			} else {
+				// console.log('repoStringList.skip', i, arr[i])
+			}
+		}
+		return out
+	}
 
 	property var issuesModel: []
 
