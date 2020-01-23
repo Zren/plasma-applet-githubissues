@@ -49,8 +49,8 @@ Item {
 		showDebug: logger.showDebug
 	}
 
-	Plasmoid.icon: panelItem.iconSource
-	Plasmoid.compactRepresentation: CompactRepresentation { id: panelItem }
+	Plasmoid.icon: Plasmoid.compactRepresentationItem ? Plasmoid.compactRepresentationItem.iconSource : ''
+	Plasmoid.compactRepresentation: CompactRepresentation {}
 	Plasmoid.activationTogglesExpanded: true
 
 	Plasmoid.fullRepresentation: FullRepresentation {}
