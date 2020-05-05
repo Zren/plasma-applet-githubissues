@@ -79,6 +79,25 @@ ConfigPage {
 				]
 			}
 
+			RowLayout {
+				Kirigami.FormData.label: i18n("Sort:")
+				ConfigComboBox {
+					configKey: "issueSort"
+					model: [
+						{ value: "created", text: i18n("Created") },
+						{ value: "updated", text: i18n("Updated") },
+						{ value: "comments", text: i18n("Comments") },
+					]
+				}
+				ConfigComboBox {
+					configKey: "issueSortDirection"
+					model: [
+						{ value: "asc", text: i18n("Ascending") },
+						{ value: "desc", text: i18n("Descending") },
+					]
+				}
+			}
+
 			MessageWidget {
 				text: i18n("Every IP can only perform 60 API requests to GitHub per hour.\nEach repository listed is 1 request.")
 				messageType: information

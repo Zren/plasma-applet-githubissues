@@ -13,6 +13,14 @@
 			<!-- enum: open, closed, all -->
 			<default>open</default>
 		</entry>
+		<entry name="issueSort" type="string">
+			<!-- enum: created, updated, comments -->
+			<default>created</default>
+		</entry>
+		<entry name="issueSortDirection" type="string">
+			<!-- enum: asc, desc -->
+			<default>desc</default>
+		</entry>
 		<entry name="showHeading" type="bool">
 			<default>true</default>
 		</entry>
