@@ -1,4 +1,4 @@
-// Version 4
+// Version 5
 
 import QtQuick 2.0
 import QtQuick.Controls 1.0
@@ -15,6 +15,17 @@ ConfigComboBox {
 		{ value: "c", text: i18n("C") },
 	]
 }
+ConfigComboBox {
+	configKey: "appDescription"
+	populated: false
+	onPopulate: {
+		model = [
+			{ value: "a", text: i18n("A") },
+			{ value: "b", text: i18n("B") },
+			{ value: "c", text: i18n("C") },
+		]
+	}
+}
 */
 RowLayout {
 	id: configComboBox
@@ -25,7 +36,7 @@ RowLayout {
 	readonly property string configValue: configKey ? plasmoid.configuration[configKey] : ""
 	onConfigValueChanged: {
 		if (!comboBox.focus && value != configValue) {
-			setValue(configValue)
+			selectValue(configValue)
 		}
 	}
 
@@ -37,15 +48,11 @@ RowLayout {
 	property alias after: labelAfter.text
 
 	signal populate()
-	property bool populated: false
+	property bool populated: true
 
-	function setValue(newValue) {
-		for (var i = 0; i < comboBox.model.length; i++) {
-			if (comboBox.model[i][valueRole] == newValue) {
-				comboBox.currentIndex = i
-				break
-			}
-		}
+	Component.onCompleted: {
+		populate()
+		selectValue(configValue)
 	}
 
 	Label {
@@ -60,11 +67,6 @@ RowLayout {
 		property string valueRole: "value"
 
 		model: []
-
-		Component.onCompleted: {
-			populate()
-			selectValue(configValue)
-		}
 
 		onCurrentIndexChanged: {
 			if (typeof model !== 'number' && 0 <= currentIndex && currentIndex < count) {
