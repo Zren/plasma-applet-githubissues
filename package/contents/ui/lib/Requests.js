@@ -1,4 +1,5 @@
 .pragma library
+// Version 7
 
 function request(opt, callback) {
 	if (typeof opt === 'string') {
@@ -6,7 +7,13 @@ function request(opt, callback) {
 	}
 	var req = new XMLHttpRequest()
 	req.onerror = function(e) {
-		console.log('XMLHttpRequest.onerror', e.status, e.statusText, e.message, e)
+		console.log('XMLHttpRequest.onerror', e)
+		if (e) {
+			console.log('\t', e.status, e.statusText, e.message)
+			callback(e.message)
+		} else {
+			callback('XMLHttpRequest.onerror(undefined)')
+		}
 	}
 	req.onreadystatechange = function() {
 		if (req.readyState === XMLHttpRequest.DONE) { // https://xhr.spec.whatwg.org/#dom-xmlhttprequest-done
@@ -30,32 +37,56 @@ function request(opt, callback) {
 	req.send(opt.data)
 }
 
+function encodeParams(params) {
+	var s = ''
+	var i = 0
+	for (var key in params) {
+		if (i > 0) {
+			s += '&'
+		}
+		var value = params[key]
+		if (typeof value === "object") {
+			// TODO: Flatten obj={list: [1, 2]} as
+			// obj[list][0]=1
+			// obj[list][1]=2
+		}
+		s += encodeURIComponent(key) + '=' + encodeURIComponent(value)
+		i += 1
+	}
+	return s
+}
+
+function encodeFormData(opt) {
+	opt.headers = opt.headers || {}
+	opt.headers['Content-Type'] = 'application/x-www-form-urlencoded'
+	if (opt.data) {
+		opt.data = encodeParams(opt.data)
+	}
+	return opt
+}
 
 function post(opt, callback) {
 	if (typeof opt === 'string') {
 		opt = { url: opt }
 	}
 	opt.method = 'POST'
-	opt.headers = opt.headers || {}
-	opt.headers['Content-Type'] = 'application/x-www-form-urlencoded'
-	if (opt.data) {
-		var s = '';
-		for (var key in opt.data) {
-			s += encodeURIComponent(key) + '=' + encodeURIComponent(opt.data[key]) + '&'
-		}
-		opt.data = s
-	}
+	encodeFormData(opt)
 	request(opt, callback)
 }
 
 
 function getJSON(opt, callback) {
+	if (typeof opt === 'string') {
+		opt = { url: opt }
+	}
+	opt.headers = opt.headers || {}
+	opt.headers['Accept'] = 'application/json'
 	request(opt, function(err, data, req) {
 		if (!err && data) {
 			data = JSON.parse(data)
 		}
 		callback(err, data, req)
-	});
+	})
 }
 
 
@@ -75,7 +106,13 @@ function postJSON(opt, callback) {
 function getFile(url, callback) {
 	var req = new XMLHttpRequest()
 	req.onerror = function(e) {
-		console.log('XMLHttpRequest.onerror', e.status, e.statusText, e.message, e)
+		console.log('XMLHttpRequest.onerror', e)
+		if (e) {
+			console.log('\t', e.status, e.statusText, e.message)
+			callback(e.message)
+		} else {
+			callback('XMLHttpRequest.onerror(undefined)')
+		}
 	}
 	req.onreadystatechange = function() {
 		if (req.readyState === 4) {
@@ -110,7 +147,7 @@ function getAppletMetadata(callback) {
 	if (index >= 0) {
 		var a = index + s.length
 		var b = url.indexOf('/', a)
-		// var packageName = url.substr(a, b-a);
+		// var packageName = url.substr(a, b-a)
 		var metadataUrl = url.substr(0, b) + '/metadata.desktop'
 		Requests.getFile(metadataUrl, function(err, data) {
 			if (err) {
@@ -119,7 +156,7 @@ function getAppletMetadata(callback) {
 
 			var metadata = parseMetadata(data)
 			callback(null, metadata)
-		});
+		})
 	} else {
 		return callback('Could not parse version.')
 	}
@@ -130,5 +167,5 @@ function getAppletVersion(callback) {
 		if (err) return callback(err)
 
 		callback(err, metadata['X-KDE-PluginInfo-Version'])
-	});
+	})
 }
