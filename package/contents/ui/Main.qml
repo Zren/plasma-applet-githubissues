@@ -21,7 +21,6 @@ Item {
 	Plasmoid.hideOnWindowDeactivate: !plasmoid.userConfiguring
 
 	readonly property int updateIntervalInMillis: plasmoid.configuration.updateIntervalInMinutes * 60 * 1000
-	readonly property string issueState: plasmoid.configuration.issueState
 	readonly property var repoStringRegex: /^([^\/]+)(\/)([^\/]+)$/
 	readonly property var repoStringList: {
 		var out = []
@@ -55,8 +54,8 @@ Item {
 
 	Plasmoid.fullRepresentation: FullRepresentation {}
 
-	function fetchIssues(repoString, issueState, callback) {
-		logger.debug('fetchIssues', repoString, issueState)
+	function fetchIssues(repoString, args, callback) {
+		logger.debugJSON('fetchIssues', repoString, args)
 		var url
 		var isLocalFile = repoString.indexOf('file://') >= 0
 		if (isLocalFile) { // Testing
@@ -64,7 +63,11 @@ Item {
 		// } else if () { // repoString contains two slashes
 			// Eg: domain.com/User/Repo
 		} else {
-			url = 'https://api.github.com/repos/' + repoString + '/issues?state=' + issueState
+			url = 'https://api.github.com/repos/' + repoString + '/issues'
+			if (Object.keys(args).length >= 1) {
+				url += '?' + Requests.encodeParams(args)
+			}
+			logger.debug('fetchIssues.url', url)
 		}
 
 		Requests.getJSON({
@@ -91,8 +94,8 @@ Item {
 		return diff >= ttl
 	}
 
-	function getIssueList(repoString, issueState, callback) {
-		logger.debug('getIssueList', repoString, issueState)
+	function getIssueList(repoString, args, callback) {
+		logger.debugJSON('getIssueList', repoString, args)
 		localDb.getJSON(repoString, function(err, data, row){
 			logger.debug('getJSON', repoString, data)
 
@@ -108,7 +111,7 @@ Item {
 			logger.debug('shouldUpdate', shouldUpdate)
 
 			if (shouldUpdate) {
-				fetchIssues(repoString, issueState, function(err, data) {
+				fetchIssues(repoString, args, function(err, data) {
 					localDb.setJSON(repoString, data, function(err){
 						logger.debug('setJSON', repoString)
 						callback(err, data)
@@ -125,6 +128,7 @@ Item {
 	}
 
 	function deleteCacheAndReload() {
+		logger.debug('deleteCacheAndReload')
 		deleteCache(function() {
 			debouncedUpdateIssuesModel.restart()
 		})
@@ -136,7 +140,11 @@ Item {
 		var tasks = []
 		for (var i = 0; i < repoStringList.length; i++) {
 			var repoString = repoStringList[i]
-			var task = getIssueList.bind(null, repoString, plasmoid.configuration.issueState)
+			var task = getIssueList.bind(null, repoString, {
+				state: plasmoid.configuration.issueState,
+				sort: plasmoid.configuration.issueSort,
+				direction: plasmoid.configuration.issueSortDirection,
+			})
 			tasks.push(task)
 		}
 
@@ -157,6 +165,12 @@ Item {
 	function issueCreatedDate(issue) {
 		return new Date(issue.created_at).valueOf()
 	}
+	function issueUpdatedDate(issue) {
+		return new Date(issue.updated_at).valueOf()
+	}
+	function issueNumComments(issue) {
+		return issue.comments
+	}
 	function concatLists(arr) {
 		if (arr.length >= 2) {
 			return Array.prototype.concat.apply(arr[0], arr.slice(1))
@@ -171,9 +185,17 @@ Item {
 		var issues = concatLists(results)
 		
 		// Sort issues by creation date descending
-		issues = issues.sort(function(a, b){
-			return issueCreatedDate(b) - issueCreatedDate(a)
-		})
+		if (plasmoid.configuration.issueSort == 'created') {
+			issues = issues.sort(function(a, b){ return issueCreatedDate(a) - issueCreatedDate(b) })
+		} else if (plasmoid.configuration.issueSort == 'updated') {
+			issues = issues.sort(function(a, b){ return issueUpdatedDate(a) - issueUpdatedDate(b) })
+		} else if (plasmoid.configuration.issueSort == 'comments') {
+			issues = issues.sort(function(a, b){ return issueNumComments(a) - issueNumComments(b) })
+		}
+
+		if (plasmoid.configuration.issueSortDirection == 'desc') {
+			issues.reverse()
+		}
 
 		issuesModel = issues
 	}
@@ -201,6 +223,8 @@ Item {
 		target: plasmoid.configuration
 		onRepoListChanged: debouncedUpdateIssuesModel.restart()
 		onIssueStateChanged: deleteCacheAndReload()
+		onIssueSortChanged: deleteCacheAndReload()
+		onIssueSortDirectionChanged: deleteCacheAndReload()
 	}
 
 	function action_refresh() {
