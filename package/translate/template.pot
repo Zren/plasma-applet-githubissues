@@ -1,5 +1,5 @@
 # Translation of githubissues in LANGUAGE
-# Copyright (C) 2019
+# Copyright (C) 2020
 # This file is distributed under the same license as the githubissues package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: githubissues \n"
 "Report-Msgid-Bugs-To: https://github.com/Zren/plasma-applet-githubissues\n"
-"POT-Creation-Date: 2019-03-20 12:51-0400\n"
+"POT-Creation-Date: 2020-05-06 12:47-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,121 +18,145 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: ../contents/config/config.qml:7
+#: ../contents/config/config.qml
 msgid "General"
 msgstr ""
 
-#: ../contents/config/config.qml:12
+#: ../contents/config/config.qml
 msgid "Debug: LocalDB"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:33
+#: ../contents/ui/config/ConfigGeneral.qml
 msgid "Repos:"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:35
+#: ../contents/ui/config/ConfigGeneral.qml
 msgid ""
 "User/Repo\n"
 "User/Repo"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:64
+#: ../contents/ui/config/ConfigGeneral.qml
 msgid "Heading:"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:73
+#: ../contents/ui/config/ConfigGeneral.qml
 msgid "Issues:"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:76
+#: ../contents/ui/config/ConfigGeneral.qml
 msgid "Open Issues"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:77
+#: ../contents/ui/config/ConfigGeneral.qml
 msgid "Closed Issues"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:78
+#: ../contents/ui/config/ConfigGeneral.qml
 msgid "Open + Closed Issues"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:83
+#: ../contents/ui/config/ConfigGeneral.qml
+msgid "Sort:"
+msgstr ""
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgid "Created"
+msgstr ""
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgid "Updated"
+msgstr ""
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgid "Comments"
+msgstr ""
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgid "Ascending"
+msgstr ""
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgid "Descending"
+msgstr ""
+
+#: ../contents/ui/config/ConfigGeneral.qml
 msgid ""
 "Every IP can only perform 60 API requests to GitHub per hour.\n"
 "Each repository listed is 1 request."
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:93
+#: ../contents/ui/config/ConfigGeneral.qml
 msgid "Update Every:"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:97
+#: ../contents/ui/config/ConfigGeneral.qml
 msgctxt "Polling interval in minutes"
 msgid "min"
 msgstr ""
 
-#: ../contents/ui/config/ConfigGeneral.qml:102
+#: ../contents/ui/config/ConfigGeneral.qml
 msgid "Desktop Widget: Show background"
 msgstr ""
 
-#: ../contents/ui/IssueListItem.qml:164
+#: ../contents/ui/IssueListItem.qml
 msgid "%1 opened %2 by %3"
 msgstr ""
 
-#: ../contents/ui/IssueListItem.qml:167
+#: ../contents/ui/IssueListItem.qml
 msgid "%1 by %3 was closed %2"
 msgstr ""
 
-#: ../contents/ui/IssueListItem.qml:169
+#: ../contents/ui/IssueListItem.qml
 msgid "%1 by %3 was merged %2"
 msgstr ""
 
-#: ../contents/ui/lib/AppletVersion.qml:41
+#: ../contents/ui/lib/AppletVersion.qml
 msgid "<b>Version:</b> %1"
 msgstr ""
 
-#: ../contents/ui/lib/ConfigLocalDBView.qml:44
+#: ../contents/ui/lib/ConfigLocalDBView.qml
 msgid "Key"
 msgstr ""
 
-#: ../contents/ui/lib/ConfigLocalDBView.qml:49
+#: ../contents/ui/lib/ConfigLocalDBView.qml
 msgid "Value"
 msgstr ""
 
-#: ../contents/ui/lib/TimeUtils.js:22
+#: ../contents/ui/lib/TimeUtils.js
 msgid "just now"
 msgstr ""
 
-#: ../contents/ui/lib/TimeUtils.js:25
+#: ../contents/ui/lib/TimeUtils.js
 msgid "%1 minute ago"
 msgid_plural "%1 minutes ago"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../contents/ui/lib/TimeUtils.js:28
+#: ../contents/ui/lib/TimeUtils.js
 msgid "%1 hour ago"
 msgid_plural "%1 hours ago"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../contents/ui/lib/TimeUtils.js:31
+#: ../contents/ui/lib/TimeUtils.js
 msgid "%1 day ago"
 msgid_plural "%1 days ago"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../contents/ui/lib/TimeUtils.js:34
+#: ../contents/ui/lib/TimeUtils.js
 msgid "%1 month ago"
 msgid_plural "%1 months ago"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../contents/ui/lib/TimeUtils.js:37
+#: ../contents/ui/lib/TimeUtils.js
 msgid "%1 year ago"
 msgid_plural "%1 years ago"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../contents/ui/Main.qml:197
+#: ../contents/ui/Main.qml
 msgid "Refresh"
 msgstr ""
