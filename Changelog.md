@@ -1,3 +1,10 @@
+## v4 - May __ 2020
+
+* Can now sort by updated or comments, including sort direction (ascending and descending) now allows for sorting by oldest first (created ascending).
+* Use min required Kirigami version (2.3) (Issue #11)
+* Filter out invalid config repoStrings (Issue #9)
+* Fix panelItem is not defined (yet) warnings.
+
 ## v3 - March 20 2019
 
 * Hide comment button when there are 0 comments.
