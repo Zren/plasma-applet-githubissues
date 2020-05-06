@@ -48,7 +48,7 @@ msgstr "Issues:"
 
 #: ../contents/ui/config/ConfigGeneral.qml
 msgid "Open Issues"
-msgstr "Geopende issues"
+msgstr "Openstaande issues"
 
 #: ../contents/ui/config/ConfigGeneral.qml
 msgid "Closed Issues"
@@ -56,39 +56,39 @@ msgstr "Gesloten issues"
 
 #: ../contents/ui/config/ConfigGeneral.qml
 msgid "Open + Closed Issues"
-msgstr "Geopende en gesloten issues"
+msgstr "Openstaande en gesloten issues"
 
 #: ../contents/ui/config/ConfigGeneral.qml
 msgid "Sort:"
-msgstr ""
+msgstr "Sorteren op:"
 
 #: ../contents/ui/config/ConfigGeneral.qml
 msgid "Created"
-msgstr ""
+msgstr "Aanmaakdatum"
 
 #: ../contents/ui/config/ConfigGeneral.qml
 msgid "Updated"
-msgstr ""
+msgstr "Bijwerkdatum"
 
 #: ../contents/ui/config/ConfigGeneral.qml
 msgid "Comments"
-msgstr ""
+msgstr "Reacties"
 
 #: ../contents/ui/config/ConfigGeneral.qml
 msgid "Ascending"
-msgstr ""
+msgstr "Oplopend"
 
 #: ../contents/ui/config/ConfigGeneral.qml
 msgid "Descending"
-msgstr ""
+msgstr "Aflopend"
 
 #: ../contents/ui/config/ConfigGeneral.qml
 msgid ""
 "Every IP can only perform 60 API requests to GitHub per hour.\n"
 "Each repository listed is 1 request."
 msgstr ""
-"Elk IP-adres kan 60 API-verzoeken per uur uitvoeren naar GitHub.\n"
-"Elke genoemde repository telt als 1 verzoek."
+"Elk ip-adres kan 60 api-verzoeken per uur versturen naar GitHub.\n"
+"Elke genoemde repo telt als 1 verzoek."
 
 #: ../contents/ui/config/ConfigGeneral.qml
 msgid "Update Every:"
