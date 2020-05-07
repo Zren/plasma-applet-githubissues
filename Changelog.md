@@ -1,6 +1,7 @@
-## v4 - May __ 2020
+## v4 - May 7 2020
 
 * Can now sort by updated or comments, including sort direction (ascending and descending) now allows for sorting by oldest first (created ascending).
+* Can now configure the panel icon.
 * Use min required Kirigami version (2.3) (Issue #11)
 * Filter out invalid config repoStrings (Issue #9)
 * Fix panelItem is not defined (yet) warnings.
