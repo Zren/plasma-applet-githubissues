@@ -98,6 +98,16 @@ ConfigPage {
 				}
 			}
 
+			ConfigAppletIcon {
+				Kirigami.FormData.label: i18n("Icon:")
+				configKey: 'icon'
+				defaultValue: 'octicon-mark-github'
+				presetValues: [
+					'gitlab-icon-symbolic',
+				]
+				Layout.fillWidth: true
+			}
+
 			MessageWidget {
 				text: i18n("Every IP can only perform 60 API requests to GitHub per hour.\nEach repository listed is 1 request.")
 				messageType: information
