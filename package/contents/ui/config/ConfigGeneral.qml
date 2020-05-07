@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.0
 import QtQuick.Layouts 1.0
+import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.kirigami 2.3 as Kirigami
 
 import "../lib"
@@ -99,6 +100,7 @@ ConfigPage {
 			}
 
 			ConfigAppletIcon {
+				visible: plasmoid.formFactor == PlasmaCore.Types.Vertical || plasmoid.formFactor == PlasmaCore.Types.Horizontal
 				Kirigami.FormData.label: i18n("Icon:")
 				configKey: 'icon'
 				defaultValue: 'octicon-mark-github'
