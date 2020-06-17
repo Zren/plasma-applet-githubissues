@@ -24,6 +24,7 @@ Item {
 	readonly property var repoStringRegex: /^([^\/]+)(\/)([^\/]+)$/
 	readonly property var repoStringList: {
 		var out = []
+		var skipped = []
 		var arr = plasmoid.configuration.repoList
 		for (var i = 0; i < arr.length; i++) {
 			var repoString = arr[i]
@@ -33,14 +34,13 @@ Item {
 			} else if (repoString.trim() == '') { // Empty str
 				// Skip
 			} else {
-				var validFormat = i18n("User/Repo")
-				var prettyErr = i18n("Repo '%1' skipped, uses invalid format. Please use '%2'.", repoString, validFormat)
-				widget.errorMessage = prettyErr
-				// console.log('repoStringList.skip', i, arr[i])
+				skipped.push(repoString)
 			}
 		}
+		repoStringSkipped = skipped
 		return out
 	}
+	property var repoStringSkipped: []
 
 	property string errorMessage: ''
 
@@ -167,6 +167,12 @@ Item {
 
 		// Reset error message.
 		widget.errorMessage = ''
+
+		if (repoStringSkipped.length >= 1) {
+			var validFormat = i18n("User/Repo")
+			var prettyErr = i18n("Repo '%1' skipped, uses invalid format. Please use '%2'.", repoStringSkipped[0], validFormat)
+			widget.errorMessage = prettyErr
+		}
 
 		var tasks = []
 		for (var i = 0; i < repoStringList.length; i++) {
