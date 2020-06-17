@@ -30,12 +30,19 @@ Item {
 			repoString = repoString.trim()
 			if (repoString.match(repoStringRegex)) {
 				out.push(repoString)
+			} else if (repoString.trim() == '') { // Empty str
+				// Skip
 			} else {
+				var validFormat = i18n("User/Repo")
+				var prettyErr = i18n("Repo '%1' skipped, uses invalid format. Please use '%2'.", repoString, validFormat)
+				widget.errorMessage = prettyErr
 				// console.log('repoStringList.skip', i, arr[i])
 			}
 		}
 		return out
 	}
+
+	property string errorMessage: ''
 
 	property var issuesModel: []
 
@@ -74,12 +81,28 @@ Item {
 			url: url
 		}, function(err, data, xhr){
 			logger.debug('fetchIssues.response.url', url)
-			logger.debug('fetchIssues.response', err, data && data.length)
-			// logger.debugJSON(data)
+			logger.debug('fetchIssues.response.err', xhr.status, err)
+			logger.debugJSON('fetchIssues.response.data.length', data && data.length)
+			// logger.debugJSON('fetchIssues.response.data', data)
 
-			if (isLocalFile) {
+			var rateLimitRemaining = parseInt(xhr.getResponseHeader('X-RateLimit-Remaining'), 10)
+
+			if (xhr.status == 0 && isLocalFile) {
 				callback(null, data) // We get HTTP 0 error for a local file, ignore it.
-			} else {
+			} else if (xhr.status == 404 && err) {
+				// 404 Not Found
+				var prettyErr = i18n("Repo '%1' not found.", repoString)
+				callback(prettyErr, data)
+			} else if (xhr.status == 403 && err && rateLimitRemaining == 0) {
+				// ___ Rate Limit reached
+				// A user has 60 requests per hour.
+				// https://developer.github.com/v3/#rate-limiting
+				logger.debug('X-RateLimit-Limit', xhr.getResponseHeader('X-RateLimit-Limit'))
+				logger.debug('X-RateLimit-Remaining', xhr.getResponseHeader('X-RateLimit-Remaining'))
+				logger.debug('X-RateLimit-Reset', xhr.getResponseHeader('X-RateLimit-Reset'))
+				var prettyErr = i18n("API Limit Reached. Please wait before refreshing.")
+				callback(prettyErr, data)
+			} else { // Okay response / Unknown error
 				callback(err, data)
 			}
 		})
@@ -112,10 +135,15 @@ Item {
 
 			if (shouldUpdate) {
 				fetchIssues(repoString, args, function(err, data) {
-					localDb.setJSON(repoString, data, function(err){
-						logger.debug('setJSON', repoString)
+					if (err) {
+						logger.debug('getIssueList.err', err)
 						callback(err, data)
-					})
+					} else {
+						localDb.setJSON(repoString, data, function(err){
+							logger.debug('setJSON', repoString)
+							callback(err, data)
+						})
+					}
 				})
 			} else {
 				callback(err, data)
@@ -137,6 +165,9 @@ Item {
 	function updateIssuesModel() {
 		logger.debug('updateIssuesModel')
 
+		// Reset error message.
+		widget.errorMessage = ''
+
 		var tasks = []
 		for (var i = 0; i < repoStringList.length; i++) {
 			var repoString = repoStringList[i]
@@ -152,9 +183,7 @@ Item {
 			logger.debug('Async.parallel.done', err, results && results.length)
 			if (err) {
 				// Skip, keep existing results (we probably hit the rate limit).
-				// A user has 60 requests per hour.
-				// https://developer.github.com/v3/#rate-limiting
-				// TODO: Show overlay error message for user feedback.
+				widget.errorMessage = err
 			} else {
 				// logger.debugJSON(results)
 				parseResults(results)

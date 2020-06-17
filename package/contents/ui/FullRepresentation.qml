@@ -10,7 +10,7 @@ import "lib/TimeUtils.js" as TimeUtils
 IssueListView {
 	id: issueListView
 
-	isSetup: widget.repoStringList.length >= 1
+	isSetup: widget.repoStringList.length >= 1 && !hasError
 	showHeading: plasmoid.configuration.showHeading
 	headingText: {
 		if (plasmoid.configuration.headingText) {
@@ -19,6 +19,10 @@ IssueListView {
 			return widget.repoStringList.join(', ')
 		}
 	}
+
+	onRefresh: widget.action_refresh()
+
+	errorMessage: widget.errorMessage
 
 	delegate: IssueListItem {
 		issueOpen: issue.state == 'open'
