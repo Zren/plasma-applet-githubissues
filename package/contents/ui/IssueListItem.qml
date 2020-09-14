@@ -1,4 +1,4 @@
-// Version 5
+// Version 6
 
 import QtQuick 2.9
 import QtQuick.Controls 1.0
@@ -38,7 +38,7 @@ ColumnLayout {
 	Rectangle {
 		visible: (heading.visible && index == 0) || index > 0
 		Layout.fillWidth: true
-		color: theme.textColor
+		color: PlasmaCore.ColorScope.textColor
 		Layout.preferredHeight: 1 * units.devicePixelRatio
 		opacity: 0.3
 	}

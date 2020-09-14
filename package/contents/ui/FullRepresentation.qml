@@ -19,6 +19,7 @@ IssueListView {
 			return widget.repoStringList.join(', ')
 		}
 	}
+	showFilter: false
 
 	onRefresh: widget.action_refresh()
 
