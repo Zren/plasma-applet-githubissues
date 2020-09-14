@@ -17,7 +17,10 @@ Item {
 		// showDebug: true
 	}
 
-	Plasmoid.backgroundHints: plasmoid.configuration.showBackground ? PlasmaCore.Types.DefaultBackground : PlasmaCore.Types.NoBackground
+	Plasmoid.backgroundHints: (typeof PlasmaCore.Types.ConfigurableBackground !== "undefined"
+		? PlasmaCore.Types.DefaultBackground | PlasmaCore.Types.ConfigurableBackground
+		: plasmoid.configuration.showBackground ? PlasmaCore.Types.DefaultBackground : PlasmaCore.Types.NoBackground
+	)
 	Plasmoid.hideOnWindowDeactivate: !plasmoid.userConfiguring
 
 	readonly property int updateIntervalInMillis: plasmoid.configuration.updateIntervalInMinutes * 60 * 1000
