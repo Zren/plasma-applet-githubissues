@@ -1,4 +1,4 @@
-# Translation of githubissues in LANGUAGE
+# Translation of githubissues in hr
 # Copyright (C) 2020
 # This file is distributed under the same license as the githubissues package.
 # FIRST AUTHOR <vladimir.mikulic2@gmail.com>, 2020.
@@ -8,15 +8,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: githubissues \n"
 "Report-Msgid-Bugs-To: https://github.com/Zren/plasma-applet-githubissues\n"
-"POT-Creation-Date: 2020-10-01 14:16-0400\n"
+"POT-Creation-Date: 2020-10-01 11:31-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Vladimir Mikulic <vladimir.mikulic2@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hr_HR\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: ../metadata.desktop
+msgid "GitHub Issues"
+msgstr ""
+
+#: ../metadata.desktop
+msgid "Lists the most recent issues for a GitHub repository."
+msgstr ""
 
 #: ../contents/config/config.qml
 msgid "General"
@@ -88,7 +96,9 @@ msgstr "Ikona:"
 msgid ""
 "Every IP can only perform 60 API requests to GitHub per hour.\n"
 "Each repository listed is 1 request."
-msgstr "Svaka IP može izvršiti samo 60 Github API zahtjeva po satu.\nSvaki repozitorij se računa kao 1 zahtjev."
+msgstr ""
+"Svaka IP može izvršiti samo 60 Github API zahtjeva po satu.\n"
+"Svaki repozitorij se računa kao 1 zahtjev."
 
 #: ../contents/ui/config/ConfigGeneral.qml
 msgid "Update Every:"
@@ -114,6 +124,14 @@ msgstr "%1 od %3 je zatvorena %2"
 #: ../contents/ui/IssueListItem.qml
 msgid "%1 by %3 was merged %2"
 msgstr "%1 od %3 je sjedinio %2"
+
+#: ../contents/ui/IssueListView.qml
+msgid "Search"
+msgstr ""
+
+#: ../contents/ui/IssueListView.qml ../contents/ui/Main.qml
+msgid "Refresh"
+msgstr "Osvježi"
 
 #: ../contents/ui/lib/AppletVersion.qml
 msgid "<b>Version:</b> %1"
@@ -162,5 +180,17 @@ msgstr[0] "Prije %1 godinu"
 msgstr[1] "Prije %1 godina"
 
 #: ../contents/ui/Main.qml
-msgid "Refresh"
-msgstr "Osvježi"
+msgid "Repo '%1' not found."
+msgstr ""
+
+#: ../contents/ui/Main.qml
+msgid "API Limit Reached. Please wait before refreshing."
+msgstr ""
+
+#: ../contents/ui/Main.qml
+msgid "User/Repo"
+msgstr ""
+
+#: ../contents/ui/Main.qml
+msgid "Repo '%1' skipped, uses invalid format. Please use '%2'."
+msgstr ""

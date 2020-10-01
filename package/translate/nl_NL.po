@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: githubissues\n"
 "Report-Msgid-Bugs-To: https://github.com/Zren/plasma-applet-githubissues\n"
-"POT-Creation-Date: 2020-05-07 14:16-0400\n"
+"POT-Creation-Date: 2020-10-01 11:31-0400\n"
 "PO-Revision-Date: 2019-01-25 20:46+0100\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <vistausss@outlook.com>\n"
@@ -17,6 +17,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.1.1\n"
+
+#: ../metadata.desktop
+msgid "GitHub Issues"
+msgstr ""
+
+#: ../metadata.desktop
+msgid "Lists the most recent issues for a GitHub repository."
+msgstr ""
 
 #: ../contents/config/config.qml
 msgid "General"
@@ -119,6 +127,14 @@ msgstr "%1 van %3 is gesloten %2"
 msgid "%1 by %3 was merged %2"
 msgstr "%1 van %3 is samengevoegd %2"
 
+#: ../contents/ui/IssueListView.qml
+msgid "Search"
+msgstr ""
+
+#: ../contents/ui/IssueListView.qml ../contents/ui/Main.qml
+msgid "Refresh"
+msgstr "Vernieuwen"
+
 #: ../contents/ui/lib/AppletVersion.qml
 msgid "<b>Version:</b> %1"
 msgstr "<b>Versie:</b> %1"
@@ -166,8 +182,20 @@ msgstr[0] "%1 jaar geleden"
 msgstr[1] "%1 jaar geleden"
 
 #: ../contents/ui/Main.qml
-msgid "Refresh"
-msgstr "Vernieuwen"
+msgid "Repo '%1' not found."
+msgstr ""
+
+#: ../contents/ui/Main.qml
+msgid "API Limit Reached. Please wait before refreshing."
+msgstr ""
+
+#: ../contents/ui/Main.qml
+msgid "User/Repo"
+msgstr ""
+
+#: ../contents/ui/Main.qml
+msgid "Repo '%1' skipped, uses invalid format. Please use '%2'."
+msgstr ""
 
 #~ msgid "User:"
 #~ msgstr "Gebruiker:"
