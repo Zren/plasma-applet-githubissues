@@ -191,7 +191,7 @@ msgstr ""
 
 #: ../contents/ui/Main.qml
 msgid "User/Repo"
-msgstr ""
+msgstr "Gebruiker/Repo"
 
 #: ../contents/ui/Main.qml
 msgid "Repo '%1' skipped, uses invalid format. Please use '%2'."

@@ -42,7 +42,9 @@ msgstr "Repozitoriji:"
 msgid ""
 "User/Repo\n"
 "User/Repo"
-msgstr "Korisnik/Repozitorij"
+msgstr ""
+"Korisnik/Repozitorij\n"
+"Korisnik/Repozitorij"
 
 #: ../contents/ui/config/ConfigGeneral.qml
 msgid "Heading:"
@@ -189,7 +191,7 @@ msgstr ""
 
 #: ../contents/ui/Main.qml
 msgid "User/Repo"
-msgstr ""
+msgstr "Korisnik/Repozitorij"
 
 #: ../contents/ui/Main.qml
 msgid "Repo '%1' skipped, uses invalid format. Please use '%2'."
