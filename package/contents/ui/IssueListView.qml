@@ -1,4 +1,4 @@
-// Version 7
+// Version 8
 
 import QtQuick 2.0
 import QtQuick.Controls 1.0
@@ -90,7 +90,7 @@ Item {
 			ComboBox3 {
 				id: tagComboBox
 				textRole: "text"
-				property string valueRole: "value"
+				property string _valueRole: "value"
 				model: issueListView.tagModel
 				property bool populated: false
 				editable: false
@@ -98,7 +98,7 @@ Item {
 				onCurrentIndexChanged: {
 					if (populated && currentIndex >= 0) {
 						var item = model[currentIndex]
-						var itemValue = item[valueRole]
+						var itemValue = item[_valueRole]
 						tagFilterSelected(itemValue)
 					}
 				}
@@ -106,7 +106,7 @@ Item {
 				function findValue(val) {
 					for (var i = 0; i < model.length; i++) {
 						var item = model[i]
-						var itemValue = item[valueRole]
+						var itemValue = item[_valueRole]
 						if (itemValue == val) {
 							return i
 						}
