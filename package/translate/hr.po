@@ -20,11 +20,11 @@ msgstr ""
 
 #: ../metadata.desktop
 msgid "GitHub Issues"
-msgstr ""
+msgstr "GitHub Pitanja"
 
 #: ../metadata.desktop
 msgid "Lists the most recent issues for a GitHub repository."
-msgstr ""
+msgstr "Prikaže najnovija pitanja za GitHub repozitorij."
 
 #: ../contents/config/config.qml
 msgid "General"
@@ -129,7 +129,7 @@ msgstr "%1 od %3 je sjedinio %2"
 
 #: ../contents/ui/IssueListView.qml
 msgid "Search"
-msgstr ""
+msgstr "Traži"
 
 #: ../contents/ui/IssueListView.qml ../contents/ui/Main.qml
 msgid "Refresh"
@@ -183,11 +183,11 @@ msgstr[1] "Prije %1 godina"
 
 #: ../contents/ui/Main.qml
 msgid "Repo '%1' not found."
-msgstr ""
+msgstr "Repozitorij '%1' nije pronađen."
 
 #: ../contents/ui/Main.qml
 msgid "API Limit Reached. Please wait before refreshing."
-msgstr ""
+msgstr "API granica dosegnuta. Molimo Vas pričekajte prije osvježavanja."
 
 #: ../contents/ui/Main.qml
 msgid "User/Repo"
@@ -195,4 +195,4 @@ msgstr "Korisnik/Repozitorij"
 
 #: ../contents/ui/Main.qml
 msgid "Repo '%1' skipped, uses invalid format. Please use '%2'."
-msgstr ""
+msgstr "Repozitorij '%1' preskočen, koristi nepravilan format. Molimo Vas koristite '%2'."
