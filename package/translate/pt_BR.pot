@@ -1,0 +1,197 @@
+# Translation of githubissues in pt_BR
+# Copyright (C) 2023
+# This file is distributed under the same license as the githubissues package.
+# Matheus Bastos <matheusmcy1@gmail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: githubissues\n"
+"Report-Msgid-Bugs-To: https://github.com/Zren/plasma-applet-githubissues\n"
+"POT-Creation-Date: 2020-10-01 11:31-0400\n"
+"PO-Revision-Date: 2023-03-22 13:40-03\n"
+"Last-Translator: Matheus Bastos <matheusmcy1@gmail.com>\n"
+"Language-Team: none\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);"
+
+#: ../metadata.desktop
+msgid "GitHub Issues"
+msgstr ""
+
+#: ../metadata.desktop
+msgid "Lists the most recent issues for a GitHub repository."
+msgstr "Lista as issues mais recents para um repositório do  Github."
+
+#: ../contents/config/config.qml
+msgid "General"
+msgstr "Geral"
+
+#: ../contents/config/config.qml
+msgid "Debug: LocalDB"
+msgstr ""
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgid "Repos:"
+msgstr "Repositórios:"
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgid ""
+"User/Repo\n"
+"User/Repo"
+msgstr ""
+"Usuário/Repositório\n"
+"Usuário/Repositório"
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgid "Heading:"
+msgstr "Títulos:"
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgid "Issues:"
+msgstr ""
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgid "Open Issues"
+msgstr ""
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgid "Closed Issues"
+msgstr ""
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgid "Open + Closed Issues"
+msgstr ""
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgid "Sort:"
+msgstr "Organizar:"
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgid "Created"
+msgstr "Criado"
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgid "Updated"
+msgstr "Atualizado"
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgid "Comments"
+msgstr "Comentários"
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgid "Ascending"
+msgstr "Crescente"
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgid "Descending"
+msgstr "Decrescente"
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgid "Icon:"
+msgstr "Ícone:"
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgid ""
+"Every IP can only perform 60 API requests to GitHub per hour.\n"
+"Each repository listed is 1 request."
+msgstr ""
+"Todo IP pode executar apenas 60 requisições na API do Github por hora.\n"
+"Cada repositório listado é 1 requisição."
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgid "Update Every:"
+msgstr "Atualizar a cada:"
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgctxt "Polling interval in minutes"
+msgid "min"
+msgstr ""
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgid "Desktop Widget: Show background"
+msgstr "Desktop Widget: Mostrar plano de fundo"
+
+#: ../contents/ui/IssueListItem.qml
+msgid "%1 opened %2 by %3"
+msgstr "%1 aberto %2 por %3"
+
+#: ../contents/ui/IssueListItem.qml
+msgid "%1 by %3 was closed %2"
+msgstr "%1 por %3 foi fechado %2"
+
+#: ../contents/ui/IssueListItem.qml
+msgid "%1 by %3 was merged %2"
+msgstr "%1 por %3 foi mesclado %2"
+
+#: ../contents/ui/IssueListView.qml
+msgid "Search"
+msgstr "Pesquisar"
+
+#: ../contents/ui/IssueListView.qml ../contents/ui/Main.qml
+msgid "Refresh"
+msgstr "Atualizar"
+
+#: ../contents/ui/lib/AppletVersion.qml
+msgid "<b>Version:</b> %1"
+msgstr ""
+
+#: ../contents/ui/lib/ConfigLocalDBView.qml
+msgid "Key"
+msgstr ""
+
+#: ../contents/ui/lib/ConfigLocalDBView.qml
+msgid "Value"
+msgstr ""
+
+#: ../contents/ui/lib/TimeUtils.js
+msgid "just now"
+msgstr "neste momento"
+
+#: ../contents/ui/lib/TimeUtils.js
+msgid "%1 minute ago"
+msgid_plural "%1 minutes ago"
+msgstr[0] "%1 minuto atrás"
+msgstr[1] "%1 minutos atrás"
+
+#: ../contents/ui/lib/TimeUtils.js
+msgid "%1 hour ago"
+msgid_plural "%1 hours ago"
+msgstr[0] "%1 hora atrás"
+msgstr[1] "%1 horas atrás"
+
+#: ../contents/ui/lib/TimeUtils.js
+msgid "%1 day ago"
+msgid_plural "%1 days ago"
+msgstr[0] "%1 dia atrás"
+msgstr[1] "%1 dias atrás"
+
+#: ../contents/ui/lib/TimeUtils.js
+msgid "%1 month ago"
+msgid_plural "%1 months ago"
+msgstr[0] "%1 mês atrás"
+msgstr[1] "%1 meses atrás"
+
+#: ../contents/ui/lib/TimeUtils.js
+msgid "%1 year ago"
+msgid_plural "%1 years ago"
+msgstr[0] "%1 ano atrás"
+msgstr[1] "%1 anos atrás"
+
+#: ../contents/ui/Main.qml
+msgid "Repo '%1' not found."
+msgstr "Repositório '%1' não encontrado."
+
+#: ../contents/ui/Main.qml
+msgid "API Limit Reached. Please wait before refreshing."
+msgstr "Limite da API Alcançado. Por favor espere antes de atualizar."
+
+#: ../contents/ui/Main.qml
+msgid "User/Repo"
+msgstr "Usuário/Repositório"
+
+#: ../contents/ui/Main.qml
+msgid "Repo '%1' skipped, uses invalid format. Please use '%2'."
+msgstr "Repositório '%1' ignorado, usa formato inválido. Por favor use '%2'."
